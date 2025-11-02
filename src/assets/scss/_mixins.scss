@@ -1,0 +1,178 @@
+@use "sass:color";
+@use "@assets/scss/colors" as colors;
+
+/************************
+****** CONVERSIONS ******
+*************************/
+
+@function toRem($px) {
+  @return calc($px/14px) * 1rem;
+}
+
+/************************
+****** DIMENSIONS ******
+*************************/
+
+@mixin icon-dimensions($width, $height: $width) {
+  width: toRem($width);
+  height: toRem($height);
+}
+
+/************************
+******* OUTLINES ********
+*************************/
+
+@mixin outline-style($width, $color, $offset) {
+  outline: $width solid $color;
+  outline-offset: $offset;
+}
+
+/*************************
+********** FONTS *********
+**************************/
+
+@mixin font-style(
+  $family,
+  $size,
+  $color,
+  $weight: typ.$font-weight--regular,
+  $line-height: typ.$line-height--normal
+) {
+  font-family: $family;
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+  line-height: $line-height;
+}
+
+@mixin text-overflow-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/*************************
+********* FLEXBOX ********
+**************************/
+
+@mixin flex($main-axis: normal, $cross-axis: normal, $direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $main-axis;
+  align-items: $cross-axis;
+}
+
+/*************************
+******* SCROLLBAR ********
+**************************/
+
+@mixin scrollbar($width, $height, $trackColor, $thumbColor) {
+  &::-webkit-scrollbar {
+    width: toRem($width);
+    height: toRem($height);
+    cursor: pointer !important;
+  }
+  &::-webkit-scrollbar-track {
+    background: $trackColor;
+  }
+  &::-webkit-scrollbar-thumb {
+    height: toRem(4px);
+    border-radius: toRem(8px);
+    background: $thumbColor;
+    cursor: pointer !important;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    cursor: pointer !important;
+  }
+  &::-webkit-scrollbar:hover {
+    cursor: pointer !important;
+  }
+}
+
+/*************************
+********* COLORS *********
+**************************/
+
+@function hexa($hexColor, $alpha) {
+  @return rgba(
+    color.red($hexColor),
+    color.green($hexColor),
+    color.blue($hexColor),
+    $alpha
+  );
+}
+
+/*************************
+********* EFFECTS ********
+**************************/
+
+@mixin backdrop-blur(
+  $color,
+  $alpha: 0.3,
+  $blur-radius: 40px,
+  $saturation: 120%
+) {
+  background: rgba($color: $color, $alpha: $alpha);
+  backdrop-filter: blur($blur-radius) saturate($saturation);
+}
+
+@mixin glass(
+  $color: colors.$white-100,
+  $border-size: 1px,
+  $border-radius: inherit,
+  $angle: 135deg,
+  $color-stop: 35%
+) {
+  @include backdrop-blur(colors.$white-100, 0.2, 75px);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: $border-radius;
+    padding: toRem($border-size);
+    background: linear-gradient(
+      $angle,
+      rgba($color: $color, $alpha: 0.5) $color-stop,
+      rgba($color: $color, $alpha: 0.1)
+    );
+    mask: linear-gradient($color 0 0) content-box, linear-gradient($color 0 0);
+    -webkit-mask: linear-gradient($color 0 0) content-box,
+      linear-gradient($color 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+/*************************
+****** MEDIA QUERY *******
+**************************/
+
+@mixin breakpoint-sm {
+  // Mobile (max-width: 576px)
+  @media (max-width: 576px) {
+    @content;
+  }
+}
+
+@mixin breakpoint-md {
+  // Tablet (min-width: 577px and max-width: 768px)
+  @media (min-width: 577px) and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin breakpoint-lg {
+  // Laptop (min-width: 769px and max-width: 1024px)
+  @media (min-width: 769px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin breakpoint-xl {
+  // Desktop (min-width: 1025px)
+  @media (min-width: 1025px) {
+    @content;
+  }
+}
