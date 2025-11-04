@@ -1,0 +1,34 @@
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/colors" as color;
+@use "@assets/scss/typography" as typ;
+
+.landing {
+  @include mixin.flex(center, center);
+  gap: mixin.toRem(12px);
+  height: 100%;
+  width: 100%;
+  padding: mixin.toRem(40px);
+
+  &__actions-section {
+    @include mixin.flex(center, flex-start, column);
+    flex: 1 0 50%;
+    height: 100%;
+  }
+
+  &__msg-container {
+    @include mixin.flex(center, flex-start, column);
+    gap: mixin.toRem(8px);
+    margin-bottom: mixin.toRem(24px);
+  }
+
+  &__subtitle-msg {
+    font-weight: typ.$font-weight--light;
+    color: color.$white-300;
+  }
+
+  &__infographic-section {
+    @include mixin.flex(center, center);
+    flex: 1 0 50%;
+    height: 100%;
+  }
+}

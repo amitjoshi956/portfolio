@@ -17,6 +17,7 @@ export default defineConfig({
     alias: {
       "@assets": resolvedPath("./src/assets"),
       "@components": resolvedPath("./src/components"),
+      "@pages": resolvedPath("./src/pages"),
     },
   },
   server: {

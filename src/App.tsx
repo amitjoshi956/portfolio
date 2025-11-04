@@ -1,11 +1,10 @@
-import { Button } from "@radix-ui/themes";
 import AppLayout from "@components/AppLayout";
+import Landing from "./pages/Landing";
 
 function App() {
   return (
     <AppLayout>
-      <h1>HelloWorld</h1>
-      <Button>Radix UI Button</Button>
+      <Landing />
     </AppLayout>
   );
 }
