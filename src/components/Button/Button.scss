@@ -1,0 +1,145 @@
+@use "@assets/scss/colors" as color;
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/typography" as typ;
+
+.button {
+  --btn--bg-color: #{linear-gradient(135deg, color.$white-100, color.$white-200)};
+  --btn--color: #{color.$white-100};
+  --btn--border: none;
+  --btn--text-decoration: none;
+  --btn--outline: none;
+
+  @include mixin.flex(center, center, row);
+  @include mixin.text-overflow-ellipsis;
+  width: max-content;
+  column-gap: mixin.toRem(8px);
+  padding: mixin.toRem(12px) mixin.toRem(36px);
+  cursor: pointer;
+  background: var(--btn--bg-color);
+  color: var(--btn--color);
+  font-size: typ.$font-size--md;
+  font-weight: typ.$font-weight--medium;
+  text-decoration: var(--btn--text-decoration);
+  outline: var(--btn--outline);
+  border: var(--btn--border);
+  border-radius: mixin.toRem(50px);
+  transition: all 0.2s ease-in-out;
+
+  &:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    --btn--bg-color: #{linear-gradient(135deg, color.$gray-200, color.$gray-300)};
+  }
+
+  &__icon {
+    @include mixin.icon-dimensions(20px);
+    color: currentColor;
+  }
+
+  &__label {
+    font-weight: typ.$font-weight--bold;
+  }
+
+  &--primary {
+    --btn--bg-color: #{linear-gradient(
+        135deg,
+        color.$yellow-100,
+        color.$yellow-200
+      )};
+    --btn--color: #{color.$black-100};
+    --btn--border: none;
+    --btn--text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      --btn--bg-color: #{color.$purple-100};
+      --btn--color: #{color.$white-100};
+      --btn--outline: 2px solid #{color.$purple-100};
+    }
+  }
+
+  &--glass {
+    --btn--border: none;
+    --btn--text-decoration: none;
+    --btn--color: #{color.$yellow-100};
+
+    @include mixin.glass;
+
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      --btn--outline: 2px solid #{color.$purple-100};
+    }
+  }
+
+  &--text {
+    --btn--bg-color: none;
+    --btn--color: #{color.$purple-100};
+    --btn--border: none;
+    --btn--text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      --btn--color: #{color.$purple-100};
+      --btn--outline: 2px solid #{color.$purple-100};
+    }
+  }
+
+  &--outlined {
+    --btn--bg-color: none;
+    --btn--color: #{color.$purple-100};
+    --btn--border: 1px solid #{color.$purple-100};
+    --btn--text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      --btn--color: #{color.$purple-100};
+      --btn--outline: 2px solid #{color.$purple-100};
+    }
+  }
+
+  &--link {
+    --btn--bg-color: none;
+    --btn--color: #{color.$purple-100};
+    --btn--border: none;
+    --btn--text-decoration: underline;
+    --btn--outline: none;
+    text-underline-offset: 2px;
+    text-decoration-skip-ink: auto;
+
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      --btn--color: #{color.$purple-100};
+      --btn--outline: none;
+    }
+  }
+
+  &--icon-only {
+    --btn--color: #{color.$black-100};
+    --btn--bg-color: #{linear-gradient(
+        135deg,
+        color.$white-100,
+        color.$white-200
+      )};
+    --btn--border: none;
+    --btn--text-decoration: none;
+    padding: mixin.toRem(12px);
+    border-radius: mixin.toRem(12px);
+
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      --btn--color: #{color.$black-100};
+      --btn--outline: 2px solid #{color.$purple-100};
+
+      svg {
+        scale: 1.1;
+        transition: scale 0.2s ease-in-out;
+      }
+    }
+  }
+}
