@@ -11,7 +11,7 @@ const Landing = () => {
   const handleWorkWithMe = () => {};
 
   return (
-    <main id="#home" className="landing">
+    <main id="home" className="landing">
       <section className="landing__actions-section">
         <div className="landing__msg-container">
           <h3 className="landing__subtitle-msg">{t("subtitleMsg")}</h3>

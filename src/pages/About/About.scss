@@ -1,0 +1,30 @@
+@use "@assets/scss/mixins" as mixin;
+
+.about {
+  @include mixin.flex(center, center);
+  padding: mixin.toRem(40px);
+  column-gap: mixin.toRem(24px);
+  height: 100dvh;
+
+  &__bio {
+    @include mixin.flex(center, center, column);
+    @include mixin.glass;
+    gap: mixin.toRem(14px);
+    flex: 1 0 25%;
+    border-radius: mixin.toRem(12px);
+    padding: mixin.toRem(14px);
+  }
+
+  &__bio-pic {
+    width: 100%;
+    height: auto;
+    border-radius: mixin.toRem(12px);
+  }
+
+  &__skills {
+    @include mixin.flex(center, center, column);
+    flex: 1 0 75%;
+    height: 100%;
+    padding: mixin.toRem(14px);
+  }
+}
