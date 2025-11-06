@@ -1,0 +1,20 @@
+{
+  "landing": {
+    "subtitleMsg": "Got an idea for a product?",
+    "titleMsg1": "Let's transform your",
+    "ideas": "ideas",
+    "titleMsg2": "into",
+    "reality": "reality",
+    "workWithMe": "Work with me",
+    "viewMyWork": "View my work"
+  },
+  "header": {
+    "brandName": "Amit Joshi",
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "testimonials": "Testimonials",
+    "contact": "Contact"
+  }
+}

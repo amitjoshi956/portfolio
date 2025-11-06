@@ -1,5 +1,6 @@
 import React, { type FC } from "react";
 import AuroraBg from "../AuroraBg";
+import Header from "@components/Header";
 
 import "./AppLayout.scss";
 
@@ -10,9 +11,8 @@ type AppLayoutProps = {
 const AppLayout: FC<AppLayoutProps> = ({ children }) => {
   return (
     <div className="app-layout">
-      <div className="app-layout__header"></div>
+      <Header />
       <div className="app-layout__content">{children}</div>
-      <div className="app-layout__footer"></div>
       <AuroraBg />
     </div>
   );

@@ -1,33 +1,39 @@
-import IgWorkDiscuss from "@assets/image/work-discussion.svg";
+import { useTranslation } from "react-i18next";
 import Button from "@components/Button";
+import IgWorkDiscuss from "@assets/image/work-discussion.svg";
 import { IcRocket, IcCodeFolder } from "@assets/icons";
 
 import "./Landing.scss";
 
 const Landing = () => {
+  const { t } = useTranslation(["common"], { keyPrefix: "landing" });
+
   const handleWorkWithMe = () => {};
 
   return (
-    <main className="landing">
+    <main id="#home" className="landing">
       <section className="landing__actions-section">
         <div className="landing__msg-container">
-          <h3 className="landing__subtitle-msg">Got an idea for a product?</h3>
+          <h3 className="landing__subtitle-msg">{t("subtitleMsg")}</h3>
           <h1 className="landing__title-msg">
-            Let's transform your{" "}
-            <b className="landing__title-msg--highlight">ideas</b> into{" "}
-            <text className="landing__title-msg--highlight">reality</text>
+            {t("titleMsg1")}
+            <b className="landing__title-msg--highlight">{` ${t("ideas")} `}</b>
+            {t("titleMsg2")}
+            <b className="landing__title-msg--highlight">{` ${t(
+              "reality"
+            )}`}</b>
           </h1>
         </div>
         <div className="landing__actions">
           <Button
             variant="primary"
-            label="Work with me"
+            label={t("workWithMe")}
             iconSrc={IcRocket}
             onClick={handleWorkWithMe}
           />
           <Button
             variant="glass"
-            label="See my work"
+            label={t("viewMyWork")}
             iconSrc={IcCodeFolder}
             onClick={handleWorkWithMe}
           />

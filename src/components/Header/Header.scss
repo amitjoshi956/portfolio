@@ -1,0 +1,47 @@
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/colors" as color;
+@use "@assets/scss/typography" as typ;
+@use "@assets/scss/variables" as var;
+
+.header {
+  @include mixin.flex(space-between, center);
+  padding: mixin.toRem(12px) mixin.toRem(40px);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba($color: color.$black-100, $alpha: 0.5) 40%,
+    rgba($color: color.$violet-200, $alpha: 0.1)
+  );
+  backdrop-filter: blur(8px);
+  z-index: var.$z-index--l6;
+
+  &__brand {
+    @include mixin.flex(space-between, center);
+    column-gap: mixin.toRem(10px);
+
+    &:hover {
+      color: initial;
+      text-decoration: initial;
+    }
+  }
+
+  &__brand-logo {
+    @include mixin.icon-dimensions(28px);
+    background-color: color.$white-100;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  &__brand-name {
+    font-size: typ.$font-size--app-title;
+    font-family: "PT Mono", monospace;
+    letter-spacing: 1px;
+  }
+
+  &__navigation {
+    @include mixin.flex(flex-end, center);
+    column-gap: mixin.toRem(24px);
+  }
+}
