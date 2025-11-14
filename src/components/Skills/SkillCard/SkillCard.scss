@@ -1,0 +1,43 @@
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/colors" as color;
+@use "@assets/scss/typography" as typ;
+
+.skill-card {
+  --skill-card--title-width: #{mixin.toRem(200px)};
+
+  @include mixin.glass;
+  @include mixin.flex(space-between, flex-start, column);
+  gap: mixin.toRem(8px);
+  padding: mixin.toRem(8px) mixin.toRem(14px);
+  border-radius: mixin.toRem(8px);
+  
+  &__header {
+    @include mixin.flex(flex-start, center);
+    column-gap: mixin.toRem(6px);
+  }
+  
+  &__icon {
+    @include mixin.icon-dimensions(24px);
+    color: color.$purple-100;
+    border: 1px solid color.$purple-100;
+    padding: 1px;
+    border-radius: 50%;
+  }
+  
+  &__title {
+    @include mixin.text-overflow-ellipsis;
+    width: var(--skill-card--title-width);
+    color: color.$white-200;
+    font-weight: typ.$font-weight--medium;
+  }
+
+  &__meta {
+    @include mixin.flex(space-between, center);
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  &__experience {
+    color: color.$white-100;
+  }
+}

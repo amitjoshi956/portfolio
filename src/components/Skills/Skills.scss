@@ -1,0 +1,23 @@
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/colors" as color;
+
+.skills {
+  height: mixin.toRem(640px);
+  padding: mixin.toRem(20px);
+  overflow-y: scroll;
+  scroll-padding: mixin.toRem(20px);
+  border-radius: mixin.toRem(16px);
+  border: 1px solid color.$gray-400;
+  background-color: rgba($color: color.$violet-200, $alpha: 0.2);
+
+  &__list {
+    @include mixin.flex(flex-start, center);
+    gap: mixin.toRem(20px);
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    flex: 0 0 auto;
+    min-width: max-content;
+  }
+}
