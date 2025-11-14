@@ -1,0 +1,32 @@
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/colors" as color;
+@use "@assets/scss/typography" as typ;
+
+.tab-item {
+  --tab-item-btn--bg-color: transparent;
+  --tab-item-btn--font-wt: #{typ.$font-weight--regular};
+
+  @include mixin.flex(center, center);
+
+  &--active {
+    --tab-item-btn--bg-color: #{color.$violet-100};
+    --tab-item-btn--font-wt: #{typ.$font-weight--medium};
+  }
+
+  &__btn {
+    background-color: var(--tab-item-btn--bg-color);
+    padding: mixin.toRem(6px) mixin.toRem(12px);
+    font-size: typ.$font-size--sm;
+    font-weight: var(--tab-item-btn--font-wt);
+    border: none;
+    border-radius: mixin.toRem(16px);
+    cursor: pointer;
+
+    &:hover {
+      @include mixin.glass;
+      --tab-item-btn--bg-color: transparent;
+      --tab-item-btn--font-wt: #{typ.$font-weight--medium};
+      background-color: transparent;
+    }
+  }
+}
