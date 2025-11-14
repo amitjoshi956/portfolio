@@ -2,15 +2,16 @@
 
 .about {
   @include mixin.flex(center, center);
-  padding: mixin.toRem(40px);
+  padding: mixin.toRem(40px) mixin.toRem(40px) 0;
   column-gap: mixin.toRem(24px);
   height: 100dvh;
+  max-width: 100dvw;
 
   &__bio {
     @include mixin.flex(center, center, column);
     @include mixin.glass;
     gap: mixin.toRem(14px);
-    flex: 1 0 25%;
+    flex: 0 0 25%;
     border-radius: mixin.toRem(12px);
     padding: mixin.toRem(14px);
   }
@@ -21,10 +22,17 @@
     border-radius: mixin.toRem(12px);
   }
 
+  &__bio-text {
+    text-align: justify;
+    word-break: normal;
+    hyphens: auto;
+  }
+
   &__skills {
-    @include mixin.flex(center, center, column);
-    flex: 1 0 75%;
+    @include mixin.flex(flex-start, flex-start, column);
+    flex: 0 0 75%;
     height: 100%;
     padding: mixin.toRem(14px);
+    margin-top: mixin.toRem(64px);
   }
 }

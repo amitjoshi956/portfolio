@@ -19,6 +19,7 @@ export default defineConfig({
       "@components": resolvedPath("./src/components"),
       "@pages": resolvedPath("./src/pages"),
       "@config": resolvedPath("./src/config"),
+      "@base": resolvedPath("./src/base"),
     },
   },
   server: {
