@@ -27,7 +27,8 @@
     "programming": "Programming",
     "devops": "DevOps",
     "tools": "Tools & Platforms",
-    "testing": "Testing"
+    "testing": "Testing",
+    "searchPlaceholder": "Type to search for a skill"
   },
   "skills": {
     "react": "React",
