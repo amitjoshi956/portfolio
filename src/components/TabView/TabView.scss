@@ -8,11 +8,19 @@
 
   &__header {
     @include mixin.glass;
+    width: fit-content;
+    border-radius: mixin.toRem(16px);
+    overflow: clip;
+  }
+
+  &__tabs-list {
     @include mixin.flex(flex-start, center);
     column-gap: mixin.toRem(3px);
-    width: max-content;
+    width: 100%;
     padding: mixin.toRem(3px);
     border-radius: mixin.toRem(16px);
+    overflow-x: scroll;
+    scrollbar-width: none;
   }
 
   &__content {

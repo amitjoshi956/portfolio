@@ -117,8 +117,22 @@ export const FrontendSkills = (t: TFunction): Skill[] => [
     icon: IcSrcCode,
   },
   {
+    id: Frontend.RadixUI,
+    title: t("radixUI"),
+    experience: 1,
+    rating: 4,
+    icon: IcSrcCode,
+  },
+  {
     id: Frontend.Mantine,
     title: t("mantine"),
+    experience: 1,
+    rating: 3,
+    icon: IcSrcCode,
+  },
+  {
+    id: Frontend.Shadcn,
+    title: t("shadcn"),
     experience: 1,
     rating: 3,
     icon: IcSrcCode,
@@ -370,7 +384,7 @@ export const TestingSkills = (t: TFunction) => [
     icon: IcSrcCode,
   },
   {
-    id: Testing.ReactTestingLibrary,
+    id: Testing.Vitest,
     title: t("vitest"),
     experience: 2,
     rating: 3,

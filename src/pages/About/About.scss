@@ -1,11 +1,21 @@
 @use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/typography" as typ;
 
 .about {
-  @include mixin.flex(center, center);
+  @include mixin.flex(center, center, column);
   padding: mixin.toRem(40px) mixin.toRem(40px) 0;
-  column-gap: mixin.toRem(24px);
   height: 100dvh;
   max-width: 100dvw;
+
+  &__title {
+    font-weight: typ.$font-weight--light;
+    place-self: flex-start;
+  }
+
+  &__content {
+    @include mixin.flex(center, center);
+    column-gap: mixin.toRem(24px);
+  }
 
   &__bio {
     @include mixin.flex(center, center, column);

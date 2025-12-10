@@ -11,7 +11,6 @@
 
   &__search {
     width: 40%;
-    top: 0;
     padding: mixin.toRem(12px) mixin.toRem(16px);
     margin-bottom: mixin.toRem(20px);
     background: transparent;
@@ -28,6 +27,7 @@
     height: mixin.toRem(500px);
     overflow: scroll;
     border-radius: mixin.toRem(4px);
+    scrollbar-width: none;
   }
 
   &__list {

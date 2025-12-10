@@ -24,6 +24,8 @@ export enum Frontend {
   Yup = "yup",
   Joi = "joi",
   Axios = "axios",
+  RadixUI = "radix-ui",
+  Shadcn = "shadcn",
   Mantine = "mantine",
   MaterialUI = "material-ui",
 }
@@ -49,7 +51,7 @@ export enum Programming {
 }
 
 export enum Tools {
-  GithubCopilot = 'github-copilot',
+  GithubCopilot = "github-copilot",
   Vite = "vite",
   ESBuild = "es-build",
   Webpack = "webpack",

@@ -19,8 +19,9 @@
     "contact": "Contact"
   },
   "about": {
+    "title": "More about me",
     "skills": "Skills",
-    "bio": "With 8+ years of experience in software development, I architect and develop scalable frontends using React, TypeScript, Redux, Node and other modern web technologies. I specialize in building pixel-perfect, performant web applications where thoughtful engineering meets real-world impact. Motived by purpose-driven development, I'm advancing toward an Architect's role to design complex systems at scale. Beyond code, I mentor students and peers on career paths and professional growth.",
+    "bio": "With 8+ years of experience in software development, I architect and develop scalable frontends using React, TypeScript, Redux, Node and other modern web technologies. I specialize in building pixel-perfect, performant web applications where thoughtful engineering meets real-world impact. Motivated by purpose-driven development, I'm advancing toward an Architect's role to design complex systems at scale. Beyond code, I mentor students and peers on career paths and professional growth.",
     "all": "All",
     "frontend": "Frontend",
     "backend": "Backend",
@@ -48,6 +49,8 @@
     "axios": "Axios",
     "mantine": "Mantine",
     "materialUI": "Material UI",
+    "radixUI": "Radix UI",
+    "shadcn": "Shadcn",
     "node": "Node",
     "express": "Express",
     "bun": "Bun",

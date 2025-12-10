@@ -21,6 +21,7 @@
     border: none;
     border-radius: mixin.toRem(16px);
     cursor: pointer;
+    white-space: nowrap;
 
     &:hover {
       @include mixin.glass;

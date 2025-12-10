@@ -59,13 +59,16 @@ const About = () => {
 
   return (
     <div id="about" className="about">
-      <section className="about__bio">
-        <img src={Headshot} alt="" className="about__bio-pic" />
-        <p className="about__bio-text">{t("bio")}</p>
-      </section>
-      <section className="about__skills">
-        <TabView tabs={SkillTabs} />
-      </section>
+      <h1 className="about__title">{t("title")}</h1>
+      <main className="about__content">
+        <section className="about__bio">
+          <img src={Headshot} alt="" className="about__bio-pic" />
+          <p className="about__bio-text">{t("bio")}</p>
+        </section>
+        <section className="about__skills">
+          <TabView tabs={SkillTabs} />
+        </section>
+      </main>
     </div>
   );
 };

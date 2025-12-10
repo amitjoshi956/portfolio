@@ -24,20 +24,22 @@ const TabView: FC<TabViewProps> = ({ activeTabId = "", tabs }) => {
 
   return (
     <div className="tab-view">
-      <ul className="tab-view__header">
-        {tabs.map((tab, idx) => {
-          const isTabActive = tab.id === activeId;
+      <div className="tab-view__header">
+        <ul className="tab-view__tabs-list">
+          {tabs.map((tab, idx) => {
+            const isTabActive = tab.id === activeId;
 
-          return (
-            <TabItem
-              {...tab}
-              key={tab.id}
-              isActive={isTabActive}
-              onClick={(tabId) => handleTabClick(tabId, idx)}
-            />
-          );
-        })}
-      </ul>
+            return (
+              <TabItem
+                {...tab}
+                key={tab.id}
+                isActive={isTabActive}
+                onClick={(tabId) => handleTabClick(tabId, idx)}
+              />
+            );
+          })}
+        </ul>
+      </div>
       <div className="tab-view__content">
         <TabContent />
       </div>

@@ -1,4 +1,4 @@
-import { useState, type FC } from "react";
+import { useMemo, useState, type FC } from "react";
 import type { Skill } from "@base/type/about";
 import SkillCard from "./SkillCard";
 
@@ -11,28 +11,36 @@ type SkillsProp = {
 
 const Skills: FC<SkillsProp> = ({ skills }) => {
   const { t } = useTranslation(["common"], { keyPrefix: "about" });
-  const [SkillsList, setSkillsList] = useState(skills);
+  const [search, setSearch] = useState<string>("");
 
-  const handleSearch = (searchTerm: string) => {
-    if (!searchTerm) {
-      setSkillsList(skills);
-      return;
+  const SkillsList = useMemo(() => {
+    const sortedSkills = skills.sort((s1, s2) => s2.rating - s1.rating);
+
+    if (!search) {
+      return sortedSkills;
     }
-    const filteredSkills = skills.filter(({ title }) =>
-      title.toLowerCase().includes(searchTerm.toLowerCase())
+
+    const filteredSkills = sortedSkills.filter(({ title }) =>
+      title.toLowerCase().includes(search.toLowerCase())
     );
 
-    setSkillsList(filteredSkills);
+    return filteredSkills;
+  }, [skills, search]);
+
+  const handleSearch = (searchTerm: string) => {
+    setSearch(searchTerm);
   };
 
   return (
     <div className="skills">
-      <input
-        type="text"
-        className="skills__search"
-        placeholder={t("searchPlaceholder")}
-        onChange={(e) => handleSearch(e.target.value)}
-      />
+      <div className="skills__actions">
+        <input
+          type="text"
+          className="skills__search"
+          placeholder={t("searchPlaceholder")}
+          onChange={(e) => handleSearch(e.target.value)}
+        />
+      </div>
       <div className="skills__list-container">
         <ul className="skills__list">
           {SkillsList.map(({ id, ...rest }) => (
