@@ -1,0 +1,8 @@
+@use "@assets/scss/mixins" as mixin;
+
+.contact {
+  @include mixin.flex(center, center, column);
+
+  height: 100dvh;
+  width: 100%;
+}

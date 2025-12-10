@@ -85,5 +85,8 @@
     "jest": "Jest",
     "vitest": "Vitest",
     "axe": "Axe (jest-axe, axe-core)"
+  },
+  "contact": {
+    "title": "Let's Connect"
   }
 }
