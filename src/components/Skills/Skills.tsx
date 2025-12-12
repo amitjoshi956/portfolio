@@ -1,9 +1,10 @@
 import { useMemo, useState, type FC } from "react";
+import { useTranslation } from "react-i18next";
 import type { Skill } from "@base/type/about";
 import SkillCard from "./SkillCard";
+import { Searchbar } from "@components/.";
 
 import "./Skills.scss";
-import { useTranslation } from "react-i18next";
 
 type SkillsProp = {
   skills: Skill[];
@@ -31,14 +32,18 @@ const Skills: FC<SkillsProp> = ({ skills }) => {
     setSearch(searchTerm);
   };
 
+  const handleClearSearch = () => {
+    setSearch("");
+  };
+
   return (
     <div className="skills">
       <div className="skills__actions">
-        <input
-          type="text"
+        <Searchbar
           className="skills__search"
           placeholder={t("searchPlaceholder")}
-          onChange={(e) => handleSearch(e.target.value)}
+          onSearch={handleSearch}
+          onClearSearch={handleClearSearch}
         />
       </div>
       <div className="skills__list-container">

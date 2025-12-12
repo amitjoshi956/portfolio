@@ -1,0 +1,37 @@
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/colors" as color;
+@use "@assets/scss/typography" as typ;
+
+.searchbar {
+  @include mixin.flex(flex-start, center);
+  min-width: mixin.toRem(200px);
+  width: 40%;
+  margin-bottom: mixin.toRem(24px);
+  position: relative;
+
+  &__input {
+    flex: 1 0 100%;
+    padding: mixin.toRem(12px) mixin.toRem(36px) mixin.toRem(12px)
+      mixin.toRem(16px);
+    background: transparent;
+    border-radius: mixin.toRem(20px);
+    border: 1px solid color.$purple-100;
+    font-size: typ.$font-size--base;
+    transition: all 0.3s ease;
+    outline: none;
+
+    &::placeholder {
+      color: color.$gray-200;
+    }
+  }
+
+  &__clear-btn {
+    @include mixin.glass;
+    position: absolute;
+    right: mixin.toRem(12px);
+    flex-shrink: 0;
+    padding: 0;
+    outline: none;
+    color: color.$white-100;
+  }
+}

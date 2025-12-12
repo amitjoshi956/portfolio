@@ -3,7 +3,17 @@ import AuroraBg from "./AuroraBg";
 import Button from "./Button";
 import Header from "./Header";
 import Icon from "./Icon";
+import Searchbar from "./Searchbar";
 import Skills from "./Skills";
 import TabView from "./TabView";
 
-export { AppLayout, AuroraBg, Button, Header, Icon, Skills, TabView };
+export {
+  AppLayout,
+  AuroraBg,
+  Button,
+  Header,
+  Icon,
+  Searchbar,
+  Skills,
+  TabView,
+};

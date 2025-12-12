@@ -20,9 +20,11 @@ export default defineConfig({
       "@pages": resolvedPath("./src/pages"),
       "@config": resolvedPath("./src/config"),
       "@base": resolvedPath("./src/base"),
+      "@common": resolvedPath("./src/common"),
     },
   },
   server: {
     port: 3001,
+    
   },
 });

@@ -4,6 +4,7 @@ import {
   SourceCodeIcon as IcSrcCode,
   ReactIcon as IcReact,
   Globe02Icon as IcGlobe,
+  CancelCircleIcon as IcCancel,
 } from "@hugeicons/core-free-icons";
 
-export { IcRocket, IcCodeFolder, IcSrcCode, IcReact, IcGlobe };
+export { IcRocket, IcCodeFolder, IcSrcCode, IcReact, IcGlobe, IcCancel };
