@@ -3,7 +3,6 @@
 
 .about {
   @include mixin.flex(center, center, column);
-  padding: mixin.toRem(40px) mixin.toRem(40px) 0;
   height: 100dvh;
   max-width: 100dvw;
 

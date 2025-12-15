@@ -1,5 +1,7 @@
 {
   "years": "Years",
+  "month": "Month",
+  "week": "Week",
   "landing": {
     "subtitleMsg": "Got an idea for a product?",
     "titleMsg1": "Let's transform your",
@@ -16,7 +18,8 @@
     "experience": "Experience",
     "projects": "Projects",
     "testimonials": "Testimonials",
-    "contact": "Contact"
+    "contact": "Contact",
+    "causes": "Causes"
   },
   "about": {
     "title": "More about me",
@@ -88,5 +91,11 @@
   },
   "contact": {
     "title": "Let's Connect"
+  },
+  "causes": {
+    "title": "Causes I Truly Support",
+    "subTitle": "This {{duration}} I'm supporting",
+    "content": "# The reason behind my every success, big or small, is the Bhagavad Gita.\n\nEver since I started reading the Bhagavad Gita, I have found:\n- Clarity - a sense of the bigger picture, simplified decision-making\n- Deep Self-Understanding - the intricate workings of the mind, the whys and hows\n- Purpose, meaning in life and heightened attentiveness\n- Peace amidst chaos\n- Lasting Solace\n\n### *Aren’t you too searching that in your life?*",
+    "ctaText": "Get Your Personal Copy"
   }
 }

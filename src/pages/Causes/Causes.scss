@@ -1,0 +1,104 @@
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/colors" as color;
+@use "@assets/scss/typography" as typ;
+
+.causes {
+  --causes--image-shadow: #{mixin.toRem(4px) mixin.toRem(4px) mixin.toRem(40px)
+    mixin.toRem(8px) rgba($color: color.$purple-100, $alpha: 0.9)};
+
+  height: 100vh;
+  width: 100%;
+
+  &__header {
+    @include mixin.flex(space-between, center);
+  }
+
+  &__title {
+    font-weight: typ.$font-weight--medium;
+  }
+
+  &__sub-title {
+    color: color.$yellow-100;
+    font-weight: typ.$font-weight--regular;
+  }
+
+  &__content {
+    @include mixin.flex(space-between, center);
+    gap: mixin.toRem(20px);
+    margin-top: mixin.toRem(60px);
+
+    h1 {
+      color: color.$white-100;
+      margin-bottom: mixin.toRem(12px);
+    }
+
+    h3 {
+      color: color.$white-100;
+      margin-top: mixin.toRem(32px);
+    }
+
+    p,
+    ul {
+      color: color.$white-200;
+      font-size: typ.$font-size--md;
+    }
+
+    ul {
+      margin-top: mixin.toRem(-12px);
+      padding: 0 mixin.toRem(20px);
+      list-style: circle;
+    }
+  }
+
+  &__info {
+    @include mixin.flex(space-between, flex-start, column);
+    flex: 0 0 50%;
+    row-gap: mixin.toRem(20px);
+  }
+
+  &__cta {
+    margin-top: mixin.toRem(24px);
+    place-self: center;
+
+    svg {
+      transform: rotateZ(-20deg);
+    }
+  }
+
+  &__graphics {
+    @include mixin.flex(center, center, column);
+    flex: 0 0 50%;
+    padding: mixin.toRem(12px);
+  }
+
+  &__image {
+    height: mixin.toRem(400px);
+    aspect-ratio: 2 / 3;
+    border-radius: mixin.toRem(8px);
+    object-fit: cover;
+    box-shadow: var(--causes--image-shadow);
+    animation: pulsating-shadow 30s infinite ease-in-out;
+  }
+}
+
+@keyframes pulsating-shadow {
+  0%,
+  100% {
+    --causes--image-shadow: #{mixin.toRem(4px) mixin.toRem(4px)
+      mixin.toRem(40px) mixin.toRem(12px)
+      rgba($color: color.$purple-100, $alpha: 0.9)};
+  }
+
+  25%,
+  75% {
+    --causes--image-shadow: #{mixin.toRem(4px) mixin.toRem(4px)
+      mixin.toRem(40px) mixin.toRem(12px)
+      rgba($color: color.$purple-100, $alpha: 0.8)};
+  }
+
+  50% {
+    --causes--image-shadow: #{mixin.toRem(4px) mixin.toRem(4px)
+      mixin.toRem(40px) mixin.toRem(12px)
+      rgba($color: color.$purple-100, $alpha: 0.7)};
+  }
+}

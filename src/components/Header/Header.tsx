@@ -31,6 +31,9 @@ const Header = () => {
         <a href="#contact" className="header__navlink">
           {t("contact")}
         </a>
+        <a href="#causes" className="header__navlink">
+          {t("causes")}
+        </a>
       </nav>
     </header>
   );

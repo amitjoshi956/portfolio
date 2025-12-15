@@ -7,7 +7,6 @@
   gap: mixin.toRem(12px);
   height: 100dvh;
   width: 100%;
-  padding: mixin.toRem(40px);
 
   &__actions-section {
     @include mixin.flex(center, flex-start, column);
@@ -21,20 +20,20 @@
     gap: mixin.toRem(8px);
     margin-top: mixin.toRem(80px);
   }
-  
+
   &__subtitle-msg {
     font-weight: typ.$font-weight--light;
     color: color.$white-300;
   }
-  
+
   &__title-msg {
     color: color.$white-100;
-    
+
     &--highlight {
       color: color.$yellow-100;
     }
   }
-  
+
   &__actions {
     @include mixin.flex(space-between, center);
     column-gap: mixin.toRem(24px);

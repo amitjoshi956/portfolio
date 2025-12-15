@@ -2,6 +2,7 @@ import AppLayout from "@components/AppLayout";
 import Landing from "@pages/Landing";
 import About from "@pages/About";
 import Contact from "@pages/Contact";
+import Causes from "@pages/Causes";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Landing />
       <About />
       <Contact />
+      <Causes />
     </AppLayout>
   );
 }
