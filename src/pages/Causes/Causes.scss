@@ -6,6 +6,7 @@
   --causes--image-shadow: #{mixin.toRem(4px) mixin.toRem(4px) mixin.toRem(40px)
     mixin.toRem(8px) rgba($color: color.$purple-100, $alpha: 0.9)};
 
+  @include mixin.flex(center, stretch, column);
   height: 100vh;
   width: 100%;
 
@@ -14,7 +15,7 @@
   }
 
   &__title {
-    font-weight: typ.$font-weight--medium;
+    font-weight: typ.$font-weight--light;
   }
 
   &__sub-title {
@@ -25,7 +26,7 @@
   &__content {
     @include mixin.flex(space-between, center);
     gap: mixin.toRem(20px);
-    margin-top: mixin.toRem(60px);
+    margin-top: mixin.toRem(80px);
 
     h1 {
       color: color.$white-100;
@@ -33,7 +34,7 @@
     }
 
     h3 {
-      color: color.$white-100;
+      color: color.$yellow-100;
       margin-top: mixin.toRem(32px);
     }
 
@@ -77,6 +78,7 @@
     border-radius: mixin.toRem(8px);
     object-fit: cover;
     box-shadow: var(--causes--image-shadow);
+    transform: translateY(-10%);
     animation: pulsating-shadow 30s infinite ease-in-out;
   }
 }

@@ -20,7 +20,7 @@
     @include mixin.flex(center, center, column);
     @include mixin.glass;
     gap: mixin.toRem(14px);
-    flex: 0 0 25%;
+    flex: 0 0 23%;
     border-radius: mixin.toRem(12px);
     padding: mixin.toRem(14px);
   }
@@ -39,7 +39,7 @@
 
   &__skills {
     @include mixin.flex(flex-start, flex-start, column);
-    flex: 0 0 75%;
+    flex: 0 0 74%;
     height: 100%;
     padding: mixin.toRem(14px);
     margin-top: mixin.toRem(64px);
