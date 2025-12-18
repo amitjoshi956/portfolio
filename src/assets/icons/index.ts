@@ -7,6 +7,7 @@ import {
   CancelCircleIcon as IcCancel,
   Book02Icon as IcBook,
   Alert02Icon as IcAlert,
+  Sent02Icon as IcSend,
 } from "@hugeicons/core-free-icons";
 
 export {
@@ -18,4 +19,5 @@ export {
   IcCancel,
   IcBook,
   IcAlert,
+  IcSend,
 };

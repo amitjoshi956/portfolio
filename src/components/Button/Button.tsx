@@ -44,7 +44,7 @@ type ButtonProps = {
   iconPlacement?: IconPlacement;
   iconSrc?: IconSvgElement;
   disabled?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
 const Button: FC<ButtonProps> = ({
