@@ -1,0 +1,90 @@
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/typography" as typ;
+@use "@assets/scss/colors" as color;
+
+.input {
+  --input--border: 1px solid #{color.$gray-200};
+  --input--outline: none;
+
+  @include mixin.flex(center, normal, column);
+  row-gap: mixin.toRem(4px);
+
+  &__label {
+    font-size: typ.$font-size--base;
+    font-weight: typ.$font-weight--medium;
+
+    &--disabled {
+      color: color.$gray-300;
+    }
+  }
+
+  &__label-required {
+    margin-left: 2px;
+    color: color.$red-100;
+  }
+
+  &__field-container {
+    @include mixin.flex(center, stretch, column);
+    row-gap: 3px;
+  }
+
+  &__field {
+    padding: mixin.toRem(12px) mixin.toRem(16px);
+    background: rgba($color: color.$violet-100, $alpha: 0.1);
+    font-size: typ.$font-size--md;
+    border: var(--input--border);
+    border-radius: mixin.toRem(8px);
+    outline: var(--input--outline);
+
+    &:focus-visible {
+      --input--outline: 1px solid #{color.$pink-200};
+    }
+
+    &--invalid {
+      --input--border: 1px solid #{color.$red-200};
+      --input--outline: none;
+
+      &:focus-visible {
+        --input--outline: none;
+      }
+    }
+
+    &--valid {
+      --input--border: 1px solid #{color.$green-100};
+      --input--outline: none;
+
+      &:focus-visible {
+        --input--outline: none;
+      }
+    }
+
+    &--disabled {
+      --input--border: 1px solid #{color.$gray-300};
+      --input--outline: none;
+
+      color: color.$gray-300;
+      cursor: not-allowed;
+    }
+  }
+
+  &__error {
+    @include mixin.flex(flex-start, center);
+    column-gap: mixin.toRem(4px);
+    margin: 0 mixin.toRem(8px);
+    padding: mixin.toRem(2px) mixin.toRem(8px);
+    background-color: rgba($color: color.$red-200, $alpha: 0.2);
+    color: color.$red-300;
+    border: 1px solid color.$red-300;
+    border-top: none;
+    border-radius: 0 0 mixin.toRem(8px) mixin.toRem(8px);
+    transition: all 0.3s ease;
+  }
+
+  &__error-icon {
+    @include mixin.icon-dimensions(12px);
+  }
+
+  &__error-message {
+    font-size: typ.$font-size--sm;
+  }
+}
