@@ -1,5 +1,4 @@
 import { type FC } from "react";
-import { Button as BaseButton } from "@radix-ui/themes";
 import { HugeiconsIcon, type IconSvgElement } from "@hugeicons/react";
 
 import "./Button.scss";
@@ -61,7 +60,7 @@ const Button: FC<ButtonProps> = ({
   const content = getButtonContent(variant, label, iconSrc, iconPlacement);
 
   return (
-    <BaseButton
+    <button
       type={type}
       className={`button button--${variant} ${className}`}
       aria-label={`${label} button`}
@@ -69,7 +68,7 @@ const Button: FC<ButtonProps> = ({
       onClick={onClick}
     >
       {content}
-    </BaseButton>
+    </button>
   );
 };
 

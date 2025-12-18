@@ -8,7 +8,19 @@ import "./Landing.scss";
 const Landing = () => {
   const { t } = useTranslation(["common"], { keyPrefix: "landing" });
 
-  const handleWorkWithMe = () => {};
+  const handleWorkWithMe = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth", inline: "center" });
+    }
+  };
+
+  const handleViewMyWork = () => {
+    const projectSection = document.getElementById("projects");
+    if (projectSection) {
+      projectSection.scrollIntoView({ behavior: "smooth", inline: "center" });
+    }
+  };
 
   return (
     <main id="home" className="landing">
@@ -35,7 +47,7 @@ const Landing = () => {
             variant="glass"
             label={t("viewMyWork")}
             iconSrc={IcCodeFolder}
-            onClick={handleWorkWithMe}
+            onClick={handleViewMyWork}
           />
         </div>
       </section>
