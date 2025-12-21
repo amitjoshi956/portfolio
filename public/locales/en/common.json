@@ -91,7 +91,7 @@
   },
   "contact": {
     "title": "Let's Connect",
-    "formTitle": "Have a query or just want to say hi?",
+    "formTitle": "Get in touch",
     "emailLabel": "Email",
     "emailPlaceholder": "Enter your email",
     "subjectLabel": "Subject line",
@@ -99,6 +99,19 @@
     "messageLabel": "Message",
     "messagePlaceholder": "Write your message here...",
     "send": "Send"
+  },
+  "topmate": {
+    "name": "Amit Joshi",
+    "title": "Connect with me on Topmate",
+    "discovery": "Discovery Call",
+    "discoveryDesc": "30-min call to discuss your project or ideas",
+    "career": "Career Guidance",
+    "careerDesc": "1-on-1 mentoring for your career growth",
+    "priorityDM": "Priority DM",
+    "priorityDesc": "Get priority responses on your questions",
+    "viewProfile": "View Profile",
+    "profileBio": "Frontend Architect | AI-Powered Developer | 8+ Years Experience",
+    "profileDesc": "Helping developers build scalable systems and advance their careers. Free career counseling for school/college bound students."
   },
   "causes": {
     "title": "Causes I Truly Support",

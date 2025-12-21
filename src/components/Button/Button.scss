@@ -23,7 +23,7 @@
   outline: var(--btn--outline);
   border: var(--btn--border);
   border-radius: mixin.toRem(50px);
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease;
 
   &:disabled {
     cursor: not-allowed;
@@ -133,7 +133,7 @@
 
       svg {
         scale: 1.1;
-        transition: scale 0.2s ease-in-out;
+        transition: scale 0.3s ease;
       }
     }
   }

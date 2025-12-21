@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { IcSend } from "@assets/icons";
+import { TopmateBaseURL, TopmateServices } from "@base/const";
 import { Input, Button, TextArea } from "@components/.";
+import ServiceCard from "./ServiceCard";
+import TopmateCard from "./TopmateCard";
 
 import "./Contact.scss";
 
@@ -13,6 +16,7 @@ type ContactFormState = {
 
 const Contact = () => {
   const { t } = useTranslation(["common"], { keyPrefix: "contact" });
+  const { t: tTopmate } = useTranslation(["common"], { keyPrefix: "topmate" });
   const [{ email, subject, message }, setFormState] =
     useState<ContactFormState>({
       email: "",
@@ -25,6 +29,10 @@ const Contact = () => {
       ...prevState,
       [name]: value,
     }));
+  };
+
+  const getServiceLink = (serviceParam: string) => {
+    return `${TopmateBaseURL}/${serviceParam}`;
   };
 
   return (
@@ -70,7 +78,29 @@ const Contact = () => {
             />
           </form>
         </section>
-        <section className="contact__topmate"></section>
+        <section className="contact__topmate">
+          <h5 className="contact__topmate-heading">{tTopmate("title")}</h5>
+          <div className="contact__topmate-services">
+            {TopmateServices.map(
+              ({ titleKey, buttonLabelKey, descriptionKey, serviceId }) => (
+                <ServiceCard
+                  key={titleKey}
+                  title={tTopmate(titleKey)}
+                  description={tTopmate(descriptionKey)}
+                  link={getServiceLink(serviceId)}
+                  buttonLabel={tTopmate(buttonLabelKey)}
+                />
+              )
+            )}
+          </div>
+          <TopmateCard
+            profileUrl={TopmateBaseURL}
+            name={tTopmate("name")}
+            bio={tTopmate("profileBio")}
+            description={tTopmate("profileDesc")}
+            ctaLabel={tTopmate("viewProfile")}
+          />
+        </section>
       </div>
     </div>
   );

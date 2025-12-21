@@ -1,0 +1,38 @@
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/typography" as typ;
+@use "@assets/scss/colors" as color;
+
+.service-card {
+  --service-card--border-color: #{rgba($color: color.$white-100, $alpha: 0.1)};
+
+  @include mixin.backdrop-blur(color.$black-100, 0.3);
+  @include mixin.flex(center, flex-start, column);
+  gap: mixin.toRem(12px);
+  padding: mixin.toRem(20px);
+  border: 1px solid var(--service-card--border-color);
+  border-radius: mixin.toRem(16px);
+  transition: all 0.3s ease;
+
+  &:hover {
+    @include mixin.backdrop-blur(color.$black-100, 0.4);
+    --service-card--border-color: #{rgba($color: color.$white-100, $alpha: 0.2)};
+  }
+
+  &__title {
+    font-size: typ.$font-size--lg;
+    font-weight: typ.$font-weight--medium;
+    color: color.$white-100;
+  }
+
+  &__description {
+    font-size: typ.$font-size--sm;
+    color: color.$gray-200;
+  }
+
+  &__button {
+    margin-top: mixin.toRem(8px);
+    padding: mixin.toRem(8px) mixin.toRem(16px);
+    font-size: typ.$font-size--sm;
+    outline-width: 1px;
+  }
+}

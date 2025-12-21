@@ -1,0 +1,51 @@
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/typography" as typ;
+@use "@assets/scss/colors" as color;
+
+.topmate-card {
+  --topmate-card--border-color: #{rgba($color: color.$white-100, $alpha: 0.1)};
+
+  @include mixin.backdrop-blur(color.$black-100, 0.3, 20px);
+  @include mixin.flex(flex-start, flex-start, column);
+  gap: mixin.toRem(16px);
+  padding: mixin.toRem(24px);
+  border: 1px solid var(--topmate-card--border-color);
+  border-radius: mixin.toRem(16px);
+  transition: all 0.3s ease;
+
+  &:hover {
+    @include mixin.backdrop-blur(color.$black-100, 0.4);
+    --topmate-card--border-color: #{rgba($color: color.$white-100, $alpha: 0.2)};
+  }
+
+  &__content {
+    @include mixin.flex(flex-start, flex-start, column);
+    gap: mixin.toRem(8px);
+    width: 100%;
+  }
+
+  &__name {
+    font-size: typ.$font-size--lg;
+    font-weight: typ.$font-weight--medium;
+    color: color.$white-100;
+  }
+
+  &__bio {
+    font-size: typ.$font-size--base;
+    color: color.$purple-100;
+    font-weight: typ.$font-weight--medium;
+  }
+
+  &__description {
+    color: color.$gray-200;
+    font-size: typ.$font-size--sm;
+    line-height: typ.$line-height--default;
+  }
+
+  &__button {
+    --btn--bg-color: #{color.$yellow-200};
+    margin-top: mixin.toRem(4px);
+    padding: mixin.toRem(8px) mixin.toRem(16px);
+    font-size: typ.$font-size--base;
+  }
+}

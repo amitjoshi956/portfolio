@@ -36,7 +36,7 @@
   }
 
   &__form-input {
-    width: 80%;
+    width: 90%;
   }
 
   &__submit-btn {
@@ -44,5 +44,20 @@
     margin-top: mixin.toRem(24px);
     place-self: center;
     transform: translateX(-25%);
+  }
+
+  &__topmate {
+    @include mixin.flex(stretch, stretch, column);
+    gap: mixin.toRem(24px);
+  }
+
+  &__topmate-heading {
+    color: color.$gray-100;
+  }
+
+  &__topmate-services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: mixin.toRem(12px);
   }
 }
