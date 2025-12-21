@@ -90,7 +90,15 @@
     "axe": "Axe (jest-axe, axe-core)"
   },
   "contact": {
-    "title": "Let's Connect"
+    "title": "Let's Connect",
+    "formTitle": "Have a query or just want to say hi?",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email",
+    "subjectLabel": "Subject line",
+    "subjectPlaceholder": "Enter the subject line",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Write your message here...",
+    "send": "Send"
   },
   "causes": {
     "title": "Causes I Truly Support",

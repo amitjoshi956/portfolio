@@ -33,6 +33,7 @@
 
   &__icon {
     @include mixin.icon-dimensions(20px);
+    flex-shrink: 0;
     color: currentColor;
   }
 

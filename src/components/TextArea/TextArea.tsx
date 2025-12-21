@@ -3,55 +3,58 @@ import { classnames } from "@common/utils";
 import { IcAlert } from "@assets/icons";
 import Icon from "@components/Icon";
 
-import "./Input.scss";
+import "./TextArea.scss";
 
-type InputType = "text" | "email" | "password" | "number" | "tel" | "url";
+const DefaultRows = 4;
 
-type InputProps = {
+type TextAreaProps = {
   name: string;
   className?: string;
-  type?: InputType;
   disabled?: boolean;
   required?: boolean;
   label?: string;
   placeholder?: string;
-  value?: string | number;
+  value?: string;
   error?: string;
+  resizable?: boolean;
+  rows?: number;
   onChange?: (value: string, fieldName: string) => void;
 };
 
-const Input: FC<InputProps> = ({
+const TextArea: FC<TextAreaProps> = ({
   name,
   className = "",
-  type = "text",
   disabled = false,
   required = false,
   label = "",
   placeholder = "",
-  value,
+  value = "",
   error = "",
+  resizable = false,
+  rows = DefaultRows,
   onChange,
 }) => {
   const rootClass = classnames({
-    input: true,
+    textarea: true,
     [className]: !!className.trim(),
   });
 
-  const inputClass = classnames({
-    input__field: true,
-    "input__field--disabled": disabled,
-    "input__field--invalid": !!error.trim() && !disabled,
-    "input__field--valid": !!value && !error.trim().length && !disabled,
+  const textareaClass = classnames({
+    textarea__field: true,
+    "textarea__field--disabled": disabled,
+    "textarea__field--invalid": !!error.trim() && !disabled,
+    "textarea__field--valid": !!value && !error.trim().length && !disabled,
+    "textarea__field--resizable": resizable,
     [`${className}-field`]: !!className.trim(),
   });
 
   const labelClass = classnames({
-    input__label: true,
-    "input__label--disabled": disabled,
+    textarea__label: true,
+    "textarea__label--disabled": disabled,
     [`${className}-label`]: !!className.trim(),
   });
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     onChange?.(e.target.value, e.target.name);
   };
 
@@ -59,23 +62,24 @@ const Input: FC<InputProps> = ({
     <div className={rootClass}>
       <label htmlFor={name} className={labelClass}>
         {label}
-        {required && <span className="input__label-required">*</span>}
+        {required && <span className="textarea__label-required">*</span>}
       </label>
-      <div className="input__field-container">
-        <input
-          className={inputClass}
+      <div className="textarea__field-container">
+        <textarea
+          className={textareaClass}
           name={name}
+          id={name}
           disabled={disabled}
           required={required}
           placeholder={placeholder}
-          type={type}
           value={value}
+          rows={rows}
           onChange={handleChange}
         />
         {error && (
-          <div className="input__error">
-            <Icon className="input__error-icon" src={IcAlert} />
-            <span className="input__error-message">{error}</span>
+          <div className="textarea__error">
+            <Icon className="textarea__error-icon" src={IcAlert} />
+            <span className="textarea__error-message">{error}</span>
           </div>
         )}
       </div>
@@ -83,4 +87,4 @@ const Input: FC<InputProps> = ({
   );
 };
 
-export default Input;
+export default TextArea;

@@ -2,9 +2,9 @@
 @use "@assets/scss/typography" as typ;
 @use "@assets/scss/colors" as color;
 
-.input {
-  --input--border: 1px solid #{color.$purple-100};
-  --input--outline: none;
+.textarea {
+  --textarea--border: 1px solid #{color.$purple-100};
+  --textarea--outline: none;
 
   @include mixin.flex(center, normal, column);
   row-gap: mixin.toRem(4px);
@@ -32,42 +32,48 @@
     padding: mixin.toRem(12px) mixin.toRem(16px);
     background: rgba($color: color.$violet-100, $alpha: 0.1);
     font-size: typ.$font-size--md;
-    border: var(--input--border);
+    border: var(--textarea--border);
     border-radius: mixin.toRem(8px);
-    outline: var(--input--outline);
+    outline: var(--textarea--outline);
+    font-family: inherit;
+    resize: none;
 
     &::placeholder {
       color: color.$gray-200;
     }
 
     &:focus-visible {
-      --input--outline: 1px solid #{color.$pink-200};
+      --textarea--outline: 1px solid #{color.$pink-200};
     }
 
     &--invalid {
-      --input--border: 1px solid #{color.$red-200};
-      --input--outline: none;
+      --textarea--border: 1px solid #{color.$red-200};
+      --textarea--outline: none;
 
       &:focus-visible {
-        --input--outline: none;
+        --textarea--outline: none;
       }
     }
 
     &--valid {
-      --input--border: 1px solid #{color.$green-100};
-      --input--outline: none;
+      --textarea--border: 1px solid #{color.$green-100};
+      --textarea--outline: none;
 
       &:focus-visible {
-        --input--outline: none;
+        --textarea--outline: none;
       }
     }
 
     &--disabled {
-      --input--border: 1px solid #{color.$gray-300};
-      --input--outline: none;
+      --textarea--border: 1px solid #{color.$gray-300};
+      --textarea--outline: none;
 
       color: color.$gray-300;
       cursor: not-allowed;
+    }
+
+    &--resizable {
+      resize: vertical;
     }
   }
 

@@ -1,11 +1,13 @@
 @use "@assets/scss/mixins" as mixin;
 @use "@assets/scss/typography" as typ;
+@use "@assets/scss/colors" as color;
 
 .contact {
   @include mixin.flex(center, stretch, column);
 
-  height: 100dvh;
+  height: 100vh;
   width: 100%;
+  padding: mixin.toRem(40px) 0;
 
   &__title {
     font-weight: typ.$font-weight--light;
@@ -15,10 +17,32 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: mixin.toRem(24px);
+    place-content: center;
+    flex: 1 0 auto;
+  }
+
+  &__connection-form {
+    @include mixin.flex(center, stretch, column);
+    gap: mixin.toRem(48px);
+  }
+
+  &__form-heading {
+    color: color.$white-200;
   }
 
   &__form {
     @include mixin.flex(center, stretch, column);
     gap: mixin.toRem(16px);
+  }
+
+  &__form-input {
+    width: 80%;
+  }
+
+  &__submit-btn {
+    width: 40%;
+    margin-top: mixin.toRem(24px);
+    place-self: center;
+    transform: translateX(-25%);
   }
 }

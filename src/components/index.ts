@@ -7,6 +7,7 @@ import Input from "./Input";
 import Searchbar from "./Searchbar";
 import Skills from "./Skills";
 import TabView from "./TabView";
+import TextArea from "./TextArea";
 
 export {
   AppLayout,
@@ -18,4 +19,5 @@ export {
   Searchbar,
   Skills,
   TabView,
+  TextArea,
 };
