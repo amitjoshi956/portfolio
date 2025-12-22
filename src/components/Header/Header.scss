@@ -44,4 +44,28 @@
     @include mixin.flex(flex-end, center);
     column-gap: mixin.toRem(24px);
   }
+
+  &__navlink {
+    --btn--color: #{color.$white-100};
+    --btn--text-decoration: none;
+
+    padding: 0 mixin.toRem(4px);
+    font-size: typ.$font-size--base;
+
+    &:hover {
+      --btn--color: #{color.$yellow-100};
+      --btn--text-decoration: underline;
+    }
+
+    .button__label {
+      font-weight: typ.$font-weight--regular;
+    }
+
+    &--active {
+      --btn--color: #{color.$yellow-100};
+      .button__label {
+        font-weight: typ.$font-weight--bold;
+      }
+    }
+  }
 }
