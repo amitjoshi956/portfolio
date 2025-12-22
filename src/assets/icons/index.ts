@@ -9,6 +9,10 @@ import {
   Alert02Icon as IcAlert,
   Sent02Icon as IcSend,
   UserIcon as IcUser,
+  Github01Icon as IcGithub,
+  Linkedin01Icon as IcLinkedin,
+  LeetcodeIcon as IcLeetcode,
+  HackerrankIcon as IcHackerRank,
 } from "@hugeicons/core-free-icons";
 
 export {
@@ -22,4 +26,8 @@ export {
   IcAlert,
   IcSend,
   IcUser,
+  IcGithub,
+  IcLinkedin,
+  IcLeetcode,
+  IcHackerRank,
 };

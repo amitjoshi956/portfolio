@@ -1,9 +1,9 @@
 import type { FC } from "react";
 import { classnames } from "@common/utils";
 import Button from "@components/Button";
+import { IcUser } from "@assets/icons";
 
 import "./TopmateCard.scss";
-import { IcUser } from "@assets/icons";
 
 type TopmateCardProps = {
   className?: string;

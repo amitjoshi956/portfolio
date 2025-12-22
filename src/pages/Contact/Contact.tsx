@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { IcSend } from "@assets/icons";
-import { TopmateBaseURL, TopmateServices } from "@base/const";
+import { Socials, TopmateBaseURL, TopmateServices } from "@base/const";
 import { Input, Button, TextArea } from "@components/.";
 import ServiceCard from "./ServiceCard";
 import TopmateCard from "./TopmateCard";
@@ -33,6 +33,10 @@ const Contact = () => {
 
   const getServiceLink = (serviceParam: string) => {
     return `${TopmateBaseURL}/${serviceParam}`;
+  };
+
+  const handleSocialClick = (url: string) => {
+    window.open(url, "_blank");
   };
 
   return (
@@ -78,28 +82,46 @@ const Contact = () => {
             />
           </form>
         </section>
-        <section className="contact__topmate">
-          <h5 className="contact__topmate-heading">{tTopmate("title")}</h5>
-          <div className="contact__topmate-services">
-            {TopmateServices.map(
-              ({ titleKey, buttonLabelKey, descriptionKey, serviceId }) => (
-                <ServiceCard
-                  key={titleKey}
-                  title={tTopmate(titleKey)}
-                  description={tTopmate(descriptionKey)}
-                  link={getServiceLink(serviceId)}
-                  buttonLabel={tTopmate(buttonLabelKey)}
-                />
-              )
-            )}
+        <section className="contact__socials">
+          <div className="contact__socials-group">
+            <h5 className="contact__group-heading">{tTopmate("title")}</h5>
+            <div className="contact__topmate-services">
+              {TopmateServices.map(
+                ({ titleKey, buttonLabelKey, descriptionKey, serviceId }) => (
+                  <ServiceCard
+                    key={titleKey}
+                    title={tTopmate(titleKey)}
+                    description={tTopmate(descriptionKey)}
+                    link={getServiceLink(serviceId)}
+                    buttonLabel={tTopmate(buttonLabelKey)}
+                  />
+                )
+              )}
+            </div>
+            <TopmateCard
+              profileUrl={TopmateBaseURL}
+              name={tTopmate("name")}
+              bio={tTopmate("profileBio")}
+              description={tTopmate("profileDesc")}
+              ctaLabel={tTopmate("viewProfile")}
+            />
           </div>
-          <TopmateCard
-            profileUrl={TopmateBaseURL}
-            name={tTopmate("name")}
-            bio={tTopmate("profileBio")}
-            description={tTopmate("profileDesc")}
-            ctaLabel={tTopmate("viewProfile")}
-          />
+
+          <div className="contact__socials-group">
+            <h5 className="contact__group-heading">{t("socialsTitle")}</h5>
+            <ul className="contact__socials-links">
+              {Socials.map(({ labelKey, url, iconSrc }) => (
+                <li key={labelKey} title={t(labelKey)}>
+                  <Button
+                    className="contact__socials-link-btn"
+                    variant="glass"
+                    iconSrc={iconSrc}
+                    onClick={() => handleSocialClick(url)}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
         </section>
       </div>
     </div>

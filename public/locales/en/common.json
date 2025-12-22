@@ -98,7 +98,12 @@
     "subjectPlaceholder": "Enter the subject line",
     "messageLabel": "Message",
     "messagePlaceholder": "Write your message here...",
-    "send": "Send"
+    "send": "Send",
+    "socialsTitle": "Check out my social profiles",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "leetcode": "LeetCode",
+    "hackerrank": "HackerRank"
   },
   "topmate": {
     "name": "Amit Joshi",
