@@ -89,6 +89,9 @@ ComponentName/
 2. Import and mount in `src/App.tsx` within `<AppLayout>`
 3. Add navigation entry in `src/base/const/index.ts` (Navigation array)
 4. Add i18n labels to `public/locales/en/common.json`
+5. Every page should have meaning a title/heading
+6. Every page should have a padding of mixin.toRem(40px) around main content area and the content should be centered
+7. Refer existing pages for structure and styling guidance
 
 ### Adding a Page-Specific Component
 
