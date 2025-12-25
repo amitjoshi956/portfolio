@@ -1,0 +1,21 @@
+@use "@assets/scss/colors" as colors;
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/typography" as typ;
+
+.chip {
+  display: inline-block;
+  padding: mixin.toRem(4px) mixin.toRem(8px);
+  border-radius: mixin.toRem(12px);
+  background-color: colors.$gray-500;
+  border: 1px solid colors.$gray-400;
+  font-size: mixin.toRem(12px);
+  font-weight: typ.$font-weight--medium;
+  color: colors.$white-100;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: colors.$gray-400;
+    border-color: colors.$gray-300;
+  }
+}

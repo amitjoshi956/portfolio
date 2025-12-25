@@ -8,3 +8,4 @@ export type TabItem = {
 };
 
 export * from "./about";
+export * from "./experience";
