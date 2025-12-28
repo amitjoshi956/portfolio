@@ -1,0 +1,35 @@
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/typography" as typ;
+@use "@assets/scss/colors" as color;
+
+.experience {
+  @include mixin.flex(center, stretch, column);
+  gap: mixin.toRem(48px);
+  height: 100vh;
+  width: 100%;
+  padding: mixin.toRem(40px) 0;
+
+  &__title {
+    font-weight: typ.$font-weight--light;
+  }
+
+  &__timeline {
+    @include mixin.flex(flex-start, stretch);
+    gap: mixin.toRem(24px);
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    flex: 1 0 auto;
+
+    @include mixin.breakpoint-sm {
+      flex-direction: column;
+      overflow-x: visible;
+    }
+
+    @include mixin.breakpoint-md {
+      flex-direction: column;
+      overflow-x: visible;
+    }
+  }
+}

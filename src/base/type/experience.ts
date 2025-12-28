@@ -1,13 +1,9 @@
-type ExperienceDate = {
-  month: string;
-  year: number;
-};
-
 export type Experience = {
   role: string;
   company: string;
-  startDate: ExperienceDate;
-  endDate?: ExperienceDate;
+  startDate: string;
+  endDate: string;
+  duration: string;
   description: string[];
   skills: string[];
 };

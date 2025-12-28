@@ -1,5 +1,7 @@
 import type { FC } from "react";
 
+import "./Chip.scss";
+
 type ChipProps = {
   className?: string;
   label: string;

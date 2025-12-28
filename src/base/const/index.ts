@@ -31,3 +31,4 @@ export const Navigation = [
 
 export * from "./about";
 export * from "./contact";
+export * from "./experience";
