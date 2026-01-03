@@ -1,0 +1,66 @@
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/colors" as color;
+@use "@assets/scss/typography" as typ;
+@use "@assets/scss/variables" as var;
+
+.experience-details {
+  @include mixin.glass;
+  @include mixin.flex(flex-start, stretch, column);
+  gap: mixin.toRem(8px);
+  width: 100%;
+  border-radius: mixin.toRem(16px);
+  padding: mixin.toRem(24px);
+
+  &__header {
+    @include mixin.flex(space-between, center);
+  }
+
+  &__role {
+    font-family: typ.$font-primary;
+    font-weight: typ.$font-weight--regular;
+    color: color.$white-100;
+  }
+
+  &__close {
+    color: color.$white-100;
+    padding: mixin.toRem(4px);
+    z-index: var.$z-index--l1;
+  }
+
+  &__company {
+    font-family: typ.$font-mono;
+    color: color.$yellow-200;
+    font-weight: typ.$font-weight--bold;
+  }
+
+  &__tenure {
+    font-size: typ.$font-size--base;
+    color: color.$gray-100;
+    line-height: typ.$line-height--normal;
+    margin-bottom: mixin.toRem(4px);
+  }
+
+  &__description {
+    padding-left: mixin.toRem(16px);
+    margin-bottom: mixin.toRem(16px);
+    flex: 1;
+
+    li {
+      font-size: mixin.toRem(16px);
+      color: color.$white-200;
+      line-height: typ.$line-height--normal;
+      margin-bottom: mixin.toRem(8px);
+      list-style-type: circle;
+
+      &::marker {
+        color: color.$purple-100;
+      }
+    }
+  }
+
+  &__skills {
+    @include mixin.flex(flex-start, center);
+    gap: mixin.toRem(12px);
+    flex-wrap: wrap;
+  }
+}

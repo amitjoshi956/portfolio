@@ -5,10 +5,12 @@ import Chip from "./Chip";
 import Header from "./Header";
 import Icon from "./Icon";
 import Input from "./Input";
+import Modal from "./Modal";
 import Searchbar from "./Searchbar";
 import Skills from "./Skills";
 import TabView from "./TabView";
 import TextArea from "./TextArea";
+import Timeline from "./Timeline";
 
 export {
   AppLayout,
@@ -18,8 +20,10 @@ export {
   Header,
   Icon,
   Input,
+  Modal,
   Searchbar,
   Skills,
   TabView,
   TextArea,
+  Timeline,
 };

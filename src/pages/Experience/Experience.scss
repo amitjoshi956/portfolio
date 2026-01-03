@@ -1,9 +1,8 @@
 @use "@assets/scss/mixins" as mixin;
 @use "@assets/scss/typography" as typ;
-@use "@assets/scss/colors" as color;
 
 .experience {
-  @include mixin.flex(center, stretch, column);
+  @include mixin.flex(flex-start, stretch, column);
   gap: mixin.toRem(48px);
   height: 100vh;
   width: 100%;
@@ -13,23 +12,38 @@
     font-weight: typ.$font-weight--light;
   }
 
-  &__timeline {
-    @include mixin.flex(flex-start, stretch);
-    gap: mixin.toRem(24px);
+  &__content {
+    @include mixin.flex(center, center);
+    gap: mixin.toRem(40px);
+    flex: 0 0 75%;
     width: 100%;
-    overflow-x: auto;
-    scrollbar-width: none;
-    scroll-behavior: smooth;
-    flex: 1 0 auto;
+    padding: mixin.toRem(12px) 0;
+    transition: all 0.3s ease;
+  }
 
-    @include mixin.breakpoint-sm {
-      flex-direction: column;
-      overflow-x: visible;
-    }
+  &__timeline-container {
+    width: 100%;
+    max-width: mixin.toRem(540px);
+    transition: all 0.3s ease;
+  }
 
-    @include mixin.breakpoint-md {
-      flex-direction: column;
-      overflow-x: visible;
-    }
+  &__detail-container {
+    @include mixin.flex(center, center);
+    flex: 1;
+    height: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: slideInRight 0.3s ease;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
