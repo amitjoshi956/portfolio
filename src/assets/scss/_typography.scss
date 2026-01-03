@@ -5,6 +5,7 @@
 *****************************/
 
 $font-primary: "General Sans", system-ui, Helvetica, sans-serif;
+$font-mono: "PT Mono", monospace;
 
 $font-size--xs: mixin.toRem(11px);
 $font-size--sm: mixin.toRem(12px);

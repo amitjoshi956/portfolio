@@ -36,7 +36,7 @@
 
   &__brand-name {
     font-size: typ.$font-size--app-title;
-    font-family: "PT Mono", monospace;
+    font-family: typ.$font-mono;
     letter-spacing: 1px;
   }
 
