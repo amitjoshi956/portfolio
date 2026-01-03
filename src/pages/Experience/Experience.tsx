@@ -40,7 +40,7 @@ const Experience = () => {
         )}
       </div>
 
-      <Modal isOpen={showModal} onClose={handleClose}>
+      <Modal open={showModal} onClose={handleClose}>
         {selectedRole && (
           <ExperienceDetails {...selectedRole} onClose={handleClose} />
         )}

@@ -1,0 +1,107 @@
+@use "@assets/scss/colors" as color;
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/variables" as var;
+@use "@assets/scss/typography" as typ;
+
+.modal-backdrop {
+  @include mixin.backdrop-blur(color.$black-100, 0.3, 20px);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  position: fixed;
+  inset: 0;
+  z-index: var.$z-index--l5;
+}
+
+.modal {
+  --modal--width: 40%;
+  --modal--height: 40%;
+  --modal--border-radius: #{mixin.toRem(12px)};
+
+  &--small {
+    --modal--width: 40%;
+    --modal--height: 40%;
+  }
+
+  &--medium {
+    --modal--width: 60%;
+    --modal--height: 60%;
+  }
+
+  &--large {
+    --modal--width: 80%;
+    --modal--height: 80%;
+  }
+
+  @include mixin.flex(flex-start, center, column);
+  @include mixin.glass;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: var(--modal--width);
+  min-height: var(--modal--height);
+  padding: mixin.toRem(12px);
+  border-radius: var(--modal--border-radius);
+  z-index: var.$z-index--l5;
+
+  &__header {
+    @include mixin.flex(space-between, center);
+    width: 100%;
+    padding: mixin.toRem(12px);
+    flex: 0 0 auto;
+  }
+
+  &__title {
+    color: color.$white-100;
+    font-weight: typ.$font-weight--regular;
+  }
+
+  &__close-btn,
+  &__close-btn:hover,
+  &__close-btn:focus,
+  &__close-btn:focus-visible {
+    --btn--bg-color: #{linear-gradient(
+        135deg,
+        color.$violet-100,
+        color.$violet-200
+      )};
+    --btn--color: #{color.$white-100};
+    --btn--outline: none;
+
+    padding: mixin.toRem(2px);
+    border-radius: mixin.toRem(8px);
+
+    svg {
+      @include mixin.icon-dimensions(24px);
+    }
+  }
+
+  &__body {
+    @include mixin.flex(center, center);
+    width: 100%;
+    flex: 1 0 auto;
+  }
+}
+
+@include mixin.breakpoint-sm {
+  .modal {
+    --modal--width: 80%;
+    --modal--height: 65%;
+
+    &--small {
+      --modal--width: 70%;
+      --modal--height: 60%;
+    }
+
+    &--medium {
+      --modal--width: 80%;
+      --modal--height: 65%;
+    }
+
+    &--large {
+      --modal--width: 90%;
+      --modal--height: 75%;
+    }
+  }
+}

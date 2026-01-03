@@ -58,6 +58,7 @@ const Header = () => {
 
           return (
             <Button
+              key={id}
               className={navlinkClass}
               variant="link"
               label={t(labelKey)}
