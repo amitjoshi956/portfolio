@@ -13,6 +13,8 @@ import {
   Linkedin01Icon as IcLinkedin,
   LeetcodeIcon as IcLeetcode,
   HackerrankIcon as IcHackerRank,
+  ArrowLeft01Icon as IcChevronLeft,
+  ArrowRight01Icon as IcChevronRight,
 } from "@hugeicons/core-free-icons";
 
 export {
@@ -30,4 +32,6 @@ export {
   IcLinkedin,
   IcLeetcode,
   IcHackerRank,
+  IcChevronLeft,
+  IcChevronRight,
 };
