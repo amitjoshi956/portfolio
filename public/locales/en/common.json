@@ -128,7 +128,9 @@
     "title": "My Experience in the Industry"
   },
   "projects": {
-    "title": "My Projects"
+    "title": "My Projects",
+    "github": "GitHub",
+    "liveDemo": "Live Demo"
   },
   "carousel": {
     "noData": "No data available"

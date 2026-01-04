@@ -15,6 +15,7 @@ import {
   HackerrankIcon as IcHackerRank,
   ArrowLeft01Icon as IcChevronLeft,
   ArrowRight01Icon as IcChevronRight,
+  LinkForwardIcon as IcLinkForward,
 } from "@hugeicons/core-free-icons";
 
 export {
@@ -34,4 +35,5 @@ export {
   IcHackerRank,
   IcChevronLeft,
   IcChevronRight,
+  IcLinkForward,
 };

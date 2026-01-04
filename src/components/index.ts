@@ -1,7 +1,7 @@
 import AppLayout from "./AppLayout";
 import AuroraBg from "./AuroraBg";
 import Button from "./Button";
-import Carousel from "./Carousel";
+import Carousel, { type CarouselItem } from "./Carousel";
 import Chip from "./Chip";
 import Header from "./Header";
 import Icon from "./Icon";
@@ -29,3 +29,5 @@ export {
   TextArea,
   Timeline,
 };
+
+export type { CarouselItem };

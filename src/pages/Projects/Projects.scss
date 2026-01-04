@@ -1,0 +1,29 @@
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/typography" as typ;
+
+.projects {
+  @include mixin.flex(center, stretch, column);
+  min-height: 100vh;
+  max-width: 100vw;
+  padding: mixin.toRem(40px);
+
+  &__title {
+    font-weight: typ.$font-weight--light;
+    place-self: flex-start;
+    margin-bottom: mixin.toRem(40px);
+  }
+
+  &__carousel-container {
+    width: 100%;
+    max-width: 100vw;
+    outline: none;
+  }
+
+  @include mixin.breakpoint-sm {
+    padding: mixin.toRem(24px) mixin.toRem(16px);
+
+    &__title {
+      margin-bottom: mixin.toRem(24px);
+    }
+  }
+}
