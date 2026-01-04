@@ -126,5 +126,11 @@
   },
   "experience": {
     "title": "My Experience in the Industry"
+  },
+  "projects": {
+    "title": "My Projects"
+  },
+  "carousel": {
+    "noData": "No data available"
   }
 }

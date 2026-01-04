@@ -1,0 +1,138 @@
+@use "@assets/scss/colors" as color;
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/typography" as typ;
+
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  &--empty {
+    @include mixin.flex(center, center);
+    min-height: mixin.toRem(200px);
+  }
+
+  &__empty-message {
+    font-size: typ.$font-size--lg;
+    color: color.$gray-100;
+    font-weight: typ.$font-weight--medium;
+  }
+
+  &__container {
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: mixin.toRem(8px) 0;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &:focus {
+      outline: 2px solid color.$purple-100;
+      outline-offset: 2px;
+      border-radius: mixin.toRem(8px);
+    }
+
+    &--centered {
+      justify-content: center;
+    }
+  }
+
+  &__item {
+    flex-shrink: 0;
+    min-width: mixin.toRem(280px);
+    max-width: mixin.toRem(400px);
+
+    @include mixin.breakpoint-sm {
+      min-width: mixin.toRem(240px);
+      max-width: mixin.toRem(320px);
+    }
+  }
+
+  &__default-card {
+    position: relative;
+    padding: mixin.toRem(24px);
+    border-radius: mixin.toRem(16px);
+    min-height: mixin.toRem(200px);
+    @include mixin.glass();
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px mixin.hexa(color.$purple-100, 0.2);
+    }
+
+    pre {
+      font-size: typ.$font-size--sm;
+      color: color.$white-100;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      margin: 0;
+    }
+  }
+
+  &__button {
+    @include mixin.flex(center, center, row);
+    @include mixin.glass(color.$white-100, 1px, 50%);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: mixin.toRem(48px);
+    height: mixin.toRem(48px);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 4px 16px mixin.hexa(color.$purple-100, 0.3);
+    }
+
+    &:active {
+      transform: translateY(-50%) scale(0.95);
+    }
+
+    &:focus-visible {
+      outline: 2px solid color.$purple-100;
+      outline-offset: 2px;
+    }
+
+    &[aria-disabled="true"] {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    &--left {
+      left: mixin.toRem(16px);
+
+      @include mixin.breakpoint-sm {
+        left: mixin.toRem(8px);
+      }
+    }
+
+    &--right {
+      right: mixin.toRem(16px);
+
+      @include mixin.breakpoint-sm {
+        right: mixin.toRem(8px);
+      }
+    }
+  }
+
+  &__button-icon {
+    @include mixin.icon-dimensions(24px);
+    color: color.$purple-100;
+    transition: color 0.3s ease;
+
+    .carousel__button:hover & {
+      color: color.$yellow-100;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import AppLayout from "./AppLayout";
 import AuroraBg from "./AuroraBg";
 import Button from "./Button";
+import Carousel from "./Carousel";
 import Chip from "./Chip";
 import Header from "./Header";
 import Icon from "./Icon";
@@ -16,6 +17,7 @@ export {
   AppLayout,
   AuroraBg,
   Button,
+  Carousel,
   Chip,
   Header,
   Icon,
