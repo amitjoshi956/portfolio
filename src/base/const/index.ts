@@ -29,6 +29,8 @@ export const Navigation = [
   },
 ];
 
+export const CausesCTAUrl = "https://amzn.in/d/7VydLlg";
+
 export * from "./about";
 export * from "./contact";
 export * from "./experience";

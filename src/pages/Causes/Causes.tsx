@@ -1,15 +1,19 @@
 import { useTranslation } from "react-i18next";
 import Markdown from "react-markdown";
-import Button from "@components/Button";
+import { CausesCTAUrl } from "@base/const";
 import CauseImg from "/causes__bg-cover.png";
-import "./Causes.scss";
 import { IcBook } from "@assets/icons";
+import { Button } from "@components/.";
+
+import "./Causes.scss";
 
 const Causes = () => {
   const { t } = useTranslation(["common"], { keyPrefix: "causes" });
   const { t: tCommon } = useTranslation(["common"]);
 
-  const onCTAClick = () => {};
+  const onCTAClick = () => {
+    window.open(CausesCTAUrl, "_blank");
+  };
 
   return (
     <div id="causes" className="causes">
