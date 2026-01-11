@@ -30,7 +30,6 @@ export const ExperienceData = [
       Frontend.MicroFrontend,
       Tools.Vite,
       Tools.Lighthouse,
-      Testing.ReactTestingLibrary,
       Testing.Vitest,
     ],
   },
@@ -60,6 +59,8 @@ export const ExperienceData = [
       Frontend.ReduxSaga,
       Frontend.ReduxToolkit,
       Frontend.ReactRouter,
+      Testing.ReactTestingLibrary,
+      Testing.Axe,
     ],
   },
   {

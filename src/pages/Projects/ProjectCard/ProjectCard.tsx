@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { IcGithub, IcLinkForward } from "@assets/icons";
-import type { Project } from "../projects.data";
+import type { Project } from "@base/type/project";
 import { Button, Chip } from "@components/.";
 
 import "./ProjectCard.scss";
@@ -13,8 +13,8 @@ const ProjectCard: FC<ProjectCardProps> = ({
   description,
   image,
   technologies,
-  githubUrl,
-  liveUrl,
+  githubUrl = "",
+  liveUrl = "",
 }) => {
   const { t } = useTranslation(["common"], { keyPrefix: "projects" });
 
@@ -41,16 +41,16 @@ const ProjectCard: FC<ProjectCardProps> = ({
         <div className="project-card__actions">
           <Button
             label={t("github")}
+            disabled={!githubUrl}
             variant="glass"
             iconSrc={IcGithub}
-            iconPlacement="left"
             onClick={() => handleOpenLink(githubUrl)}
           />
           <Button
             label={t("liveDemo")}
+            disabled={!liveUrl}
             variant="primary"
             iconSrc={IcLinkForward}
-            iconPlacement="left"
             onClick={() => handleOpenLink(liveUrl)}
           />
         </div>

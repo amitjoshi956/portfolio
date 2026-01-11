@@ -1,59 +1,97 @@
-import type { CarouselItem } from "@components/.";
+import {
+  Backend,
+  Devops,
+  Frontend,
+  Programming,
+  Testing,
+  Tools,
+} from "@base/enum";
+import type { Project } from "@base/type";
 
-export type Project = CarouselItem & {
-  title: string;
-  description: string;
-  image: string;
-  technologies: string[];
-  githubUrl: string;
-  liveUrl: string;
-};
-
-export const PROJECTS: Project[] = [
+export const Projects: Project[] = [
   {
-    id: 1,
-    title: "E-Commerce Platform",
-    description:
-      "A full-stack e-commerce platform built with React, Node.js, and MongoDB. Features include user authentication, product catalog, shopping cart, and payment integration with Stripe.",
-    image: "/projects/ecommerce.png",
-    technologies: ["React", "Node.js", "MongoDB", "Express", "Redux", "Stripe"],
-    githubUrl: "https://github.com/yourusername/ecommerce-platform",
-    liveUrl: "https://ecommerce-demo.example.com",
-  },
-  {
-    id: 2,
-    title: "Task Management App",
-    description:
-      "A collaborative task management application with real-time updates using WebSockets. Built with React, TypeScript, and Firebase for backend services.",
-    image: "/projects/taskmanager.png",
+    id: "rsyatra",
+    title: "rsyatra",
+    description: "rsyatra-desc",
+    image: "/projects/rsyatra.png",
+    liveUrl: "https://rsyatra.com",
     technologies: [
-      "React",
-      "TypeScript",
-      "Firebase",
-      "Material UI",
-      "WebSockets",
+      Frontend.React,
+      Frontend.RTKQuery,
+      Tools.Claude,
+      Tools.GithubCopilot,
+      Programming.Typescript,
+      Frontend.ReactHookForm,
+      Frontend.RadixUI,
+      Frontend.Zod,
     ],
-    githubUrl: "https://github.com/yourusername/task-manager",
-    liveUrl: "https://taskmanager-demo.example.com",
   },
   {
-    id: 3,
-    title: "Weather Dashboard",
-    description:
-      "An interactive weather dashboard that displays real-time weather data and forecasts. Integrates with OpenWeather API and features beautiful data visualizations.",
-    image: "/projects/weather.png",
-    technologies: ["React", "Chart.js", "OpenWeather API", "SCSS", "Axios"],
-    githubUrl: "https://github.com/yourusername/weather-dashboard",
-    liveUrl: "https://weather-demo.example.com",
+    id: "autoposts-ai",
+    title: "autoposts-ai",
+    description: "autoposts-ai-desc",
+    image: "/projects/autoposts-ai.png",
+    githubUrl: "https://github.com/amitjoshi956/auto-posts-ai",
+    liveUrl: "https://auto-posts-ai.web.app",
+    technologies: [
+      Frontend.React,
+      Frontend.TanstackQuery,
+      Tools.GithubCopilot,
+      Backend.Node,
+      Backend.Express,
+      Backend.MongoDB,
+      Backend.Firebase,
+      Devops.GithubActions,
+    ],
   },
   {
-    id: 4,
-    title: "Social Media Analytics",
-    description:
-      "A comprehensive analytics dashboard for social media metrics. Features data visualization, trend analysis, and exportable reports with PDF generation.",
-    image: "/projects/analytics.png",
-    technologies: ["React", "D3.js", "Node.js", "PostgreSQL", "Redux Toolkit"],
-    githubUrl: "https://github.com/yourusername/social-analytics",
-    liveUrl: "https://analytics-demo.example.com",
+    id: "burger-builder",
+    title: "burger-builder",
+    description: "burger-builder-desc",
+    image: "/projects/burger-builder.png",
+    githubUrl: "https://github.com/amitjoshi956/burgerbuilder-app",
+    liveUrl: "https://burger-builder-956.web.app/",
+    technologies: [
+      Frontend.React,
+      Frontend.Axios,
+      Programming.JavaScript,
+      Backend.Firebase,
+      Devops.Git,
+      Devops.Github,
+      Programming.HTML,
+      Programming.CSS,
+    ],
+  },
+  {
+    id: "vidly",
+    title: "vidly",
+    description: "vidly-desc",
+    image: "/projects/vidly.png",
+    githubUrl: "https://github.com/amitjoshi956/vidly-app",
+    technologies: [
+      Programming.JavaScript,
+      Backend.Node,
+      Backend.Express,
+      Backend.MongoDB,
+      Backend.Mongoose,
+      Testing.Jest,
+    ],
+  },
+  {
+    id: "soulflix",
+    title: "soulflix",
+    description: "soulflix-desc",
+    image: "/projects/soulflix.png",
+    liveUrl: "https://soulflix-app-108.web.app/",
+    githubUrl: "https://github.com/amitjoshi956/soulflix-ui",
+    technologies: [
+      Frontend.React,
+      Frontend.Axios,
+      Tools.Claude,
+      Programming.Typescript,
+      Programming.SCSS,
+      Backend.Firebase,
+      Devops.GithubActions,
+    ],
   },
 ];

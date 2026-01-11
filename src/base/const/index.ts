@@ -15,10 +15,10 @@ export const Navigation = [
     id: "projects",
     labelKey: "projects",
   },
-  {
-    id: "testimonials",
-    labelKey: "testimonials",
-  },
+  // {
+  //   id: "testimonials",
+  //   labelKey: "testimonials",
+  // },
   {
     id: "contact",
     labelKey: "contact",

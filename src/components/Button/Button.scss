@@ -29,6 +29,7 @@
     cursor: not-allowed;
     pointer-events: none;
     --btn--bg-color: #{linear-gradient(135deg, color.$gray-200, color.$gray-300)};
+    --btn--color: #{color.$gray-100};
   }
 
   &__icon {
@@ -69,6 +70,10 @@
     &:hover,
     &:active {
       --btn--outline: 2px solid #{color.$purple-100};
+    }
+
+    &:disabled {
+      --btn--color: #{color.$gray-200};
     }
   }
 

@@ -24,7 +24,7 @@
   "about": {
     "title": "More about me",
     "skills": "Skills",
-    "bio": "With 8+ years of experience in software development, I architect and develop scalable frontends using React, TypeScript, Redux, Node and other modern web technologies. I specialize in building pixel-perfect, performant web applications where thoughtful engineering meets real-world impact. Motivated by purpose-driven development, I'm advancing toward an Architect's role to design complex systems at scale. Beyond code, I mentor students and peers on career paths and professional growth.",
+    "bio": "AI Powered Full Stack Engineer with 8+ years of experience in designing & building scalable web applications using React, TypeScript, Node and modern frameworks. Proven record in AI-assisted development, performance optimization, and leading high-performing developers team. Passionate about solving practical problems with high-impact solutions that create real value. Aiming to advance into an Architect's role. Beyond code, I mentor students and peers on career paths and professional growth.",
     "all": "All",
     "frontend": "Frontend",
     "backend": "Backend",
@@ -140,7 +140,17 @@
   "projects": {
     "title": "My Projects",
     "github": "GitHub",
-    "liveDemo": "Live Demo"
+    "liveDemo": "Live Demo",
+    "rsyatra": "RS Yatra",
+    "rsyatra-desc": "A spiritual community platform for member database management and retreat registration. Features include authentication, email verification, password recovery, and profile management. Payment gateway integration and more features planned for next iteration in March 2026.",
+    "autoposts-ai": "AutoPosts AI",
+    "autoposts-ai-desc": "An AI powered tool for generating and scheduling social media posts. Features include user authentication and viewing generated post. Post scheduling feature is planned. Project currently on hold due to other commitments.",
+    "burger-builder": "BurgerBuilder",
+    "burger-builder-desc": "A burger customization and ordering web-app. Features include ingredient-based customization, order placement, user authentication, and access to order history.",
+    "vidly": "Vidly APIs",
+    "vidly-desc": "Video rental APIs built with Node.js, Express, and MongoDB, free to integrate with your app, just clone and host it! Features user authentication, genres, movies & customer listings, video rental and returns processing.",
+    "soulflix": "Soulflix",
+    "soulflix-desc": "Soulflix is a clone video streaming app with a curated selection of spiritual movies, series, and podcasts. Designed to emulate the best features of popular video streaming apps, Soulflix offers a distraction-free environment to nourish your soul."
   },
   "carousel": {
     "noData": "No data available"
