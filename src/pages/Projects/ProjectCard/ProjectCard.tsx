@@ -33,7 +33,7 @@ const ProjectCard: FC<ProjectCardProps> = ({
         <p className="project-card__description">{description}</p>
 
         <div className="project-card__technologies">
-          {technologies.map((tech: string) => (
+          {technologies.map((tech) => (
             <Chip key={tech} label={tech} />
           ))}
         </div>

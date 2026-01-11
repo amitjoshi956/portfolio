@@ -94,12 +94,7 @@
 **************************/
 
 @function hexa($hexColor, $alpha) {
-  @return rgba(
-    color.red($hexColor),
-    color.green($hexColor),
-    color.blue($hexColor),
-    $alpha
-  );
+  @return rgba($color: $hexColor, $alpha: $alpha);
 }
 
 /*************************

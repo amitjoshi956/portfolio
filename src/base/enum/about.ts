@@ -44,14 +44,17 @@ export enum Backend {
 export enum Programming {
   Typescript = "typescript",
   JavaScript = "javascript",
+  Java = "java",
   HTML = "html",
   CSS = "css",
   SCSS = "scss",
   SQL = "sql",
+  YAML = "yaml",
 }
 
 export enum Tools {
   GithubCopilot = "github-copilot",
+  Claude = "claude",
   Vite = "vite",
   ESBuild = "es-build",
   Webpack = "webpack",
@@ -60,6 +63,7 @@ export enum Tools {
   Sentry = "sentry",
   LogRocket = "logrocket",
   WebpageTest = "webpagetest",
+  SonarQube = "sonarqube",
 }
 
 export enum Devops {
@@ -69,7 +73,6 @@ export enum Devops {
   BitBucket = "bit-bucket",
   GithubActions = "github-actions",
   Jenkins = "jenkins",
-  YAML = "yaml",
 }
 
 export enum Testing {
@@ -77,4 +80,5 @@ export enum Testing {
   Jest = "jest",
   Vitest = "vitest",
   Axe = "axe",
+  JUnit = "junit",
 }

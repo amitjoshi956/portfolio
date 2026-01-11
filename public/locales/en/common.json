@@ -69,6 +69,7 @@
     "scss": "SCSS",
     "sql": "SQL",
     "githubCopilot": "GitHub Copilot",
+    "claude": "Claude",
     "vite": "Vite",
     "esbuild": "ESBuild",
     "webpack": "Webpack",
@@ -125,7 +126,13 @@
     "ctaText": "Get Your Personal Copy"
   },
   "experience": {
-    "title": "My Experience in the Industry"
+    "title": "My Experience in the Industry",
+    "specialistSoftwareEngineer": "Specialist Software Engineer",
+    "seniorSoftwareEngineer": "Senior Software Engineer",
+    "softwareEngineer": "Software Engineer",
+    "ltimindtree": "LTIMindtree",
+    "robertBosch": "Robert Bosch Engineering and Business Solutions",
+    "present": "Present"
   },
   "projects": {
     "title": "My Projects",

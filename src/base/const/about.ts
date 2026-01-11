@@ -248,14 +248,35 @@ export const ProgrammingSkills = (t: TFunction) => [
     rating: 3,
     icon: IcSrcCode,
   },
+  {
+    id: Programming.Java,
+    title: t("java"),
+    experience: 8,
+    rating: 3,
+    icon: IcSrcCode,
+  },
+  {
+    id: Programming.YAML,
+    title: t("yaml"),
+    experience: 2,
+    rating: 3,
+    icon: IcSrcCode,
+  },
 ];
 
 export const ToolsSkills = (t: TFunction) => [
   {
     id: Tools.GithubCopilot,
     title: t("githubCopilot"),
-    experience: 1,
-    rating: 3,
+    experience: 1.5,
+    rating: 4,
+    icon: IcSrcCode,
+  },
+  {
+    id: Tools.Claude,
+    title: t("claude"),
+    experience: 1.5,
+    rating: 4,
     icon: IcSrcCode,
   },
   {
@@ -314,6 +335,13 @@ export const ToolsSkills = (t: TFunction) => [
     rating: 4,
     icon: IcSrcCode,
   },
+  {
+    id: Tools.SonarQube,
+    title: t("sonarqube"),
+    experience: 8,
+    rating: 4,
+    icon: IcSrcCode,
+  },
 ];
 
 export const DevopsSkills = (t: TFunction) => [
@@ -359,13 +387,6 @@ export const DevopsSkills = (t: TFunction) => [
     rating: 2,
     icon: IcSrcCode,
   },
-  {
-    id: Devops.YAML,
-    title: t("yaml"),
-    experience: 2,
-    rating: 3,
-    icon: IcSrcCode,
-  },
 ];
 
 export const TestingSkills = (t: TFunction) => [
@@ -394,6 +415,13 @@ export const TestingSkills = (t: TFunction) => [
     id: Testing.Axe,
     title: t("axe"),
     experience: 3,
+    rating: 3,
+    icon: IcSrcCode,
+  },
+  {
+    id: Testing.JUnit,
+    title: t("junit"),
+    experience: 8,
     rating: 3,
     icon: IcSrcCode,
   },

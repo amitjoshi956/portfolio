@@ -1,3 +1,4 @@
+import { useNavigateToSection } from "@common/hooks";
 import AppLayout from "@components/AppLayout";
 import Landing from "@pages/Landing";
 import About from "@pages/About";
@@ -7,6 +8,10 @@ import Contact from "@pages/Contact";
 import Causes from "@pages/Causes";
 
 function App() {
+  useNavigateToSection({
+    "#projects": "projects",
+  });
+
   return (
     <AppLayout>
       <Landing />
