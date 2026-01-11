@@ -1,5 +1,8 @@
 import { IcGithub, IcHackerRank, IcLeetcode, IcLinkedin } from "@assets/icons";
 
+export const ContactURL =
+  "https://mojocode-aj-default-rtdb.asia-southeast1.firebasedatabase.app/";
+
 export const TopmateBaseURL = "https://topmate.io/amitjoshi956";
 
 export const TopmateServices = [

@@ -1,0 +1,35 @@
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/typography" as typ;
+@use "@assets/scss/colors" as color;
+
+.request-message {
+  @include mixin.flex(center, center, column);
+  gap: mixin.toRem(16px);
+
+  &__header {
+    @include mixin.flex(center, center);
+    gap: mixin.toRem(8px);
+  }
+
+  &__icon {
+    @include mixin.icon-dimensions(24px);
+
+    &--success {
+      color: color.$green-100;
+    }
+
+    &--error {
+      color: color.$red-100;
+    }
+  }
+
+  &__title {
+    font-weight: typ.$font-weight--bold;
+    color: color.$white-200;
+  }
+
+  &__text {
+    font-size: typ.$font-size--md;
+    color: color.$white-300;
+  }
+}

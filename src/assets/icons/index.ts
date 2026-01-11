@@ -16,6 +16,7 @@ import {
   ArrowLeft01Icon as IcChevronLeft,
   ArrowRight01Icon as IcChevronRight,
   LinkForwardIcon as IcLinkForward,
+  CheckmarkCircle02Icon as IcCheckedCircle,
 } from "@hugeicons/core-free-icons";
 
 export {
@@ -36,4 +37,5 @@ export {
   IcChevronLeft,
   IcChevronRight,
   IcLinkForward,
+  IcCheckedCircle,
 };

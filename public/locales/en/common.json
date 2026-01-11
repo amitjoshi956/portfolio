@@ -107,7 +107,11 @@
     "linkedin": "LinkedIn",
     "github": "GitHub",
     "leetcode": "LeetCode",
-    "hackerrank": "HackerRank"
+    "hackerrank": "HackerRank",
+    "requestSuccessTitle": "Request received!",
+    "requestSuccessText": "Your request was received successfully. We will get back to you soon.",
+    "requestErrorTitle": "Request failed!",
+    "requestErrorText": "Your request failed. Please try again later."
   },
   "topmate": {
     "name": "Amit Joshi",
