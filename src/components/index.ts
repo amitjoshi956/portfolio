@@ -6,6 +6,7 @@ import Chip from "./Chip";
 import Header from "./Header";
 import Icon from "./Icon";
 import Input from "./Input";
+import Loader from "./Loader";
 import Modal from "./Modal";
 import Searchbar from "./Searchbar";
 import Skills from "./Skills";
@@ -22,6 +23,7 @@ export {
   Header,
   Icon,
   Input,
+  Loader,
   Modal,
   Searchbar,
   Skills,

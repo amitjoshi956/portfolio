@@ -1,0 +1,70 @@
+@use "@assets/scss/colors" as color;
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/typography" as typ;
+
+.loader {
+  @include mixin.flex(center, center, column);
+  width: 100%;
+  height: 100%;
+  min-height: mixin.toRem(120px);
+  row-gap: mixin.toRem(20px);
+
+  &__spinner {
+    position: relative;
+    width: mixin.toRem(60px);
+    height: mixin.toRem(60px);
+  }
+
+  &__spinner-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: mixin.toRem(3px) solid transparent;
+    animation: spin 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+
+    &:nth-child(1) {
+      border-top-color: color.$purple-100;
+      animation-delay: 0s;
+    }
+
+    &:nth-child(2) {
+      inset: mixin.toRem(6px);
+      border-right-color: color.$yellow-100;
+      animation-delay: 0.15s;
+      animation-direction: reverse;
+    }
+
+    &:nth-child(3) {
+      inset: mixin.toRem(12px);
+      border-bottom-color: color.$purple-200;
+      animation-delay: 0.3s;
+    }
+  }
+
+  &__message {
+    font-size: typ.$font-size--md;
+    font-weight: typ.$font-weight--medium;
+    color: color.$gray-100;
+    text-align: center;
+    animation: pulse 2s ease-in-out infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
