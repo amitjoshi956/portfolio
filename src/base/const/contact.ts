@@ -1,7 +1,7 @@
 import { IcGithub, IcHackerRank, IcLeetcode, IcLinkedin } from "@assets/icons";
 
 export const ContactURL =
-  "https://mojocode-aj-default-rtdb.asia-southeast1.firebasedatabase.app/";
+  "https://portfolio-core-ywcp.onrender.com/contact-request";
 
 export const TopmateBaseURL = "https://topmate.io/amitjoshi956";
 
