@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Navigation } from "@base/const";
-import Logo from "/logo-aj.svg";
+import Logo from "@assets/image/logo-aj.svg";
 import Button from "@components/Button";
 
 import "./Header.scss";
