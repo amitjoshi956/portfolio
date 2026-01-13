@@ -1,8 +1,10 @@
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { useTranslation } from "react-i18next";
+import { AppRoutes } from "@base/const/routes";
 import { IcAlert, IcCheckedCircle, IcSend } from "@assets/icons";
 import {
-  ContactURL,
+  ResetErrorTime,
+  AllowNewRequestTime,
   Socials,
   TopmateBaseURL,
   TopmateServices,
@@ -33,6 +35,7 @@ const Contact = () => {
     });
 
   const [requestStatus, setRequestStatus] = useState<RequestStatus>("idle");
+  const formResetRef = useRef<boolean>(false);
 
   const isSendDisabled = !email || !message;
   const isRequestSuccess = requestStatus === "success";
@@ -60,7 +63,7 @@ const Contact = () => {
 
     if (email.trim() && message.trim()) {
       setRequestStatus("loading");
-      fetch(ContactURL, {
+      fetch(`${AppRoutes.Base}${AppRoutes.ContactRequest}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -78,8 +81,17 @@ const Contact = () => {
         .catch(() => {
           setRequestStatus("error");
           setTimeout(() => {
+            formResetRef.current = true;
             setRequestStatus("idle");
-          }, 5000);
+          }, ResetErrorTime);
+        })
+        .finally(() => {
+          setTimeout(() => {
+            if (formResetRef.current) {
+              setRequestStatus("idle");
+              formResetRef.current = false;
+            }
+          }, AllowNewRequestTime);
         });
     }
   };

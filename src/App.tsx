@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { useNavigateToSection } from "@common/hooks";
+import { AppRoutes } from "@base/const";
 import AppLayout from "@components/AppLayout";
 import Landing from "@pages/Landing";
 import About from "@pages/About";
@@ -11,6 +13,12 @@ function App() {
   useNavigateToSection({
     "#projects": "projects",
   });
+
+  useEffect(() => {
+    fetch(`${AppRoutes.Base}${AppRoutes.HealthCheck}`).catch(() => {
+      // Silently ignore health check failures
+    });
+  }, []);
 
   return (
     <AppLayout>

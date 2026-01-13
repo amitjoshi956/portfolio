@@ -1,8 +1,5 @@
 import { IcGithub, IcHackerRank, IcLeetcode, IcLinkedin } from "@assets/icons";
 
-export const ContactURL =
-  "https://portfolio-core-ywcp.onrender.com/contact-request";
-
 export const TopmateBaseURL = "https://topmate.io/amitjoshi956";
 
 export const TopmateServices = [
@@ -48,3 +45,5 @@ export const Socials = [
     iconSrc: IcHackerRank,
   },
 ];
+export const AllowNewRequestTime = 60000;
+export const ResetErrorTime = 5000;
