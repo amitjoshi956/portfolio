@@ -10,7 +10,7 @@ import {
   ToolsSkills,
 } from "@base/const";
 import { Skill } from "@base/enum";
-import Headshot from "/headshot__bio-pic.svg";
+import Headshot from "/headshot__bio-pic.webp";
 import { TabView, Skills } from "@components/.";
 
 import "./About.scss";
