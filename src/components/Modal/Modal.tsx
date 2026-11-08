@@ -5,11 +5,7 @@ import Button from "@components/Button";
 
 import "./Modal.scss";
 
-export enum ModalSize {
-  Small = "small",
-  Medium = "medium",
-  Large = "large",
-}
+export type ModalSize = "small" | "medium" | "large";
 
 type ModalProps = {
   open?: boolean;
@@ -26,7 +22,7 @@ const Modal: FC<ModalProps> = ({
   className = "",
   headerClassName = "",
   title = "",
-  size = ModalSize.Small,
+  size = "small",
   children = "",
   onClose,
 }) => {

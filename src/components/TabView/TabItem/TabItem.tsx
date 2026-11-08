@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import type { TabItem as TTabItem } from "@base/type";
+import type { TabItem as TTabItem } from "../TabView";
 
 import "./TabItem.scss";
 

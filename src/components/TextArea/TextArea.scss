@@ -75,6 +75,11 @@
     &--resizable {
       resize: vertical;
     }
+
+    &--autogrow {
+      overflow-y: hidden;
+      transition: height 0.12s ease-out;
+    }
   }
 
   &__error {

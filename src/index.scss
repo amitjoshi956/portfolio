@@ -8,21 +8,37 @@
 }
 
 :root {
-  --primary-dark: #{color.$violet-100};
-  --primary-light: #{color.$white-100};
-  --accent-primary: #{color.$yellow-100};
+  --color-bg-primary: #{color.$violet-100};
+  --color-bg-surface: #{color.$violet-300};
+  --color-bg-widget: rgba(255, 255, 255, 0.04);
+  --color-text-primary: #f0eef8;
+  --color-text-secondary: #9b97b0;
+  --color-accent: #{color.$accent-sand-dark};
+  --color-accent-hover: #{color.$accent-sand-hover-dark};
+  --color-accent-glow: rgba(212, 192, 138, 0.12);
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-success: #{color.$success-dark};
+  --color-error: #{color.$error-dark};
 
-  height: 100dvh;
-  width: 100dvw;
-  overflow: hidden;
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: 16px;
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+
+  --primary-dark: var(--color-bg-primary);
+  --primary-light: var(--color-text-primary);
+  --accent-primary: var(--color-accent);
+
+  min-height: 100dvh;
+  width: 100%;
 
   font-family: typ.$font-primary;
-  line-height: 1.15;
+  line-height: typ.$line-height--default;
   font-weight: typ.$font-weight--regular;
 
-  color-scheme: light dark;
-  color: color.$white-100;
-  background-color: var(--primary-dark);
+  color-scheme: dark;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -30,63 +46,91 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: #{typ.$font-weight--medium};
-  color: var(--primary-light);
-  cursor: pointer;
-  text-decoration: inherit;
-}
-a:hover {
-  color: var(--accent-primary);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-a:active {
-  color: var(--accent-primary);
+[data-theme="light"] {
+  --color-bg-primary: #{color.$lavender-100};
+  --color-bg-surface: #{color.$lavender-200};
+  --color-bg-widget: rgba(255, 255, 255, 0.75);
+  --color-text-primary: #09071a;
+  --color-text-secondary: #6b6880;
+  --color-accent: #{color.$accent-sand-light};
+  --color-accent-hover: #{color.$accent-sand-hover-light};
+  --color-accent-glow: rgba(160, 136, 64, 0.08);
+  --color-border-subtle: rgba(0, 0, 0, 0.08);
+  --color-success: #{color.$success-light};
+  --color-error: #{color.$error-light};
+
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-blur: 16px;
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+
+  color-scheme: light;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--primary-dark);
-  color: var(--primary-light);
+  min-height: 100dvh;
+  width: 100%;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #root {
   position: relative;
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-h1 {
-  font-size: typ.$font-size--h1;
-  font-weight: typ.$font-weight--bold;
-}
-
-h2 {
-  font-size: typ.$font-size--h2;
-  font-weight: typ.$font-weight--bold;
-}
-
-h3 {
-  font-size: typ.$font-size--h3;
-  font-weight: typ.$font-weight--bold;
-}
-
-h4 {
-  font-size: typ.$font-size--h4;
+a {
   font-weight: typ.$font-weight--medium;
-}
+  color: var(--color-text-primary);
+  cursor: pointer;
+  text-decoration: inherit;
+  transition: color 0.2s ease;
 
-h5 {
-  font-size: typ.$font-size--h5;
-  font-weight: typ.$font-weight--medium;
-}
-
-h6 {
-  font-size: typ.$font-size--h6;
-  font-weight: typ.$font-weight--medium;
+  &:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
 }
 
 ul,
 ol {
   list-style: none;
+}
+
+// Accessible skip link
+.skip-link {
+  position: absolute;
+  top: -9999px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-accent);
+  color: var(--color-bg-primary);
+  padding: 8px 16px;
+  font-weight: typ.$font-weight--bold;
+  border-radius: 4px;
+  z-index: 1000;
+  text-decoration: none;
+
+  &:focus {
+    top: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

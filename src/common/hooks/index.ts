@@ -1,2 +1,1 @@
-export * from "./useMediaQuery";
-export * from "./useNavigateToSection";
+export { useMediaQuery } from "./useMediaQuery";

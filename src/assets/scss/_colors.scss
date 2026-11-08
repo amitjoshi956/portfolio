@@ -1,3 +1,4 @@
+// Primitive Color Palette
 // Whites
 $white-100: #ffffff;
 $white-200: #dedfef;
@@ -13,41 +14,51 @@ $gray-300: #535562;
 $gray-400: #42434d;
 $gray-500: #2f3037;
 
-// Violets
-$violet-100: #0d0a1a;
-$violet-200: #1b1422;
+// Cosmic Violets
+$violet-100: #09071a;
+$violet-200: #120e24;
+$violet-300: #1e1a30;
+$violet-400: #2a2542;
 
-// Purple
+// Light Mode Surfaces
+$lavender-100: #f0eef8;
+$lavender-200: #e8e5f0;
+$lavender-300: #dedae8;
+
+// Accent: Warm Muted Sand (Non-flashy, accessible)
+$accent-sand-dark: #d4c08a;
+$accent-sand-hover-dark: #e0d0a0;
+$accent-sand-light: #a08840;
+$accent-sand-hover-light: #8a7530;
+
+// Semantic
+$success-dark: #4ade80;
+$success-light: #16a34a;
+$error-dark: #f87171;
+$error-light: #dc2626;
+
+// Legacy palettes (kept for wave SVGs and component backward compatibility)
 $purple-100: #a07aca;
 $purple-200: #613096;
 $purple-300: #483262;
 $purple-400: #3d2774;
 
-// Pinks
 $pink-100: #f7c9e7;
 $pink-200: #f094ce;
 $pink-300: #e85eb6;
 $pink-400: #d61f93;
 $pink-500: #b21a7b;
 
-$magenta-100: #8305ad;
-
-// Yellows
 $yellow-100: #f9e574;
 $yellow-200: #dbc860;
 
-// Blues
 $blue-100: #3690ea;
 $blue-200: #2d78c3;
-$blue-300: #2363a2;
-$blue-400: #1a4f84;
 
-// Reds
 $red-100: #ff6b6b;
 $red-200: #e64545;
 $red-300: #c53030;
 
-// Greens
 $green-100: #51cf66;
 $green-200: #2f9e44;
 $green-300: #1b6b2f;

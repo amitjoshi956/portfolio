@@ -1,0 +1,104 @@
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/typography" as typ;
+
+.chat-layout {
+  position: relative;
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+
+  &__header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(12px, 2vw, 20px) clamp(16px, 4vw, 40px);
+    background: transparent;
+    pointer-events: none;
+
+    & > * {
+      pointer-events: auto;
+    }
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    column-gap: mixin.toRem(10px);
+    user-select: none;
+  }
+
+  &__logo {
+    width: clamp(24px, 2.5vw, 32px);
+    height: clamp(24px, 2.5vw, 32px);
+    object-fit: contain;
+  }
+
+  &__brand-name {
+    font-size: typ.$font-size-small;
+    font-weight: typ.$font-weight--medium;
+    color: var(--color-text-primary);
+    letter-spacing: 0.02em;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    column-gap: mixin.toRem(6px);
+  }
+
+  &__action-btn {
+    background: transparent;
+    border: none;
+    padding: mixin.toRem(8px);
+    border-radius: mixin.toRem(8px);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease, background-color 0.2s ease;
+
+    &:hover {
+      color: var(--color-text-primary);
+      background-color: var(--color-border-subtle);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+    }
+  }
+
+  &__action-icon {
+    width: mixin.toRem(18px);
+    height: mixin.toRem(18px);
+  }
+
+  &__main {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    position: relative;
+    z-index: 10;
+    padding-bottom: mixin.toRem(24px);
+  }
+
+  &__content {
+    width: 100%;
+    max-width: 800px;
+    padding: 0 clamp(16px, 3vw, 24px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

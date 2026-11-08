@@ -15,16 +15,17 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
+      "@api": resolvedPath("./src/api"),
+      "@controllers": resolvedPath("./src/controllers"),
+      "@features": resolvedPath("./src/features"),
+      "@widgets": resolvedPath("./src/widgets"),
       "@assets": resolvedPath("./src/assets"),
       "@components": resolvedPath("./src/components"),
-      "@pages": resolvedPath("./src/pages"),
       "@config": resolvedPath("./src/config"),
-      "@base": resolvedPath("./src/base"),
       "@common": resolvedPath("./src/common"),
     },
   },
   server: {
     port: 3001,
-    
   },
 });

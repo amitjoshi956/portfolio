@@ -4,9 +4,17 @@
 *********** FONTS ***********
 *****************************/
 
-$font-primary: "General Sans", system-ui, Helvetica, sans-serif;
-$font-mono: "PT Mono", monospace;
+$font-primary: "General Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+$font-mono: "JetBrains Mono", "Fira Code", monospace;
 
+// Fluid Typography Tokens
+$font-size-hero: clamp(1.75rem, 4vw, 2.5rem);
+$font-size-title: clamp(1.25rem, 2.5vw, 1.75rem);
+$font-size-body: clamp(0.875rem, 1.2vw, 1rem);
+$font-size-small: clamp(0.75rem, 1vw, 0.875rem);
+$font-size-input: clamp(0.875rem, 1.1vw, 1rem);
+
+// Static Step Scale (for fixed primitives)
 $font-size--xs: mixin.toRem(11px);
 $font-size--sm: mixin.toRem(12px);
 $font-size--base: mixin.toRem(14px);
@@ -33,4 +41,4 @@ $font-weight--bold: 700;
 $font-weight--black: 900;
 
 $line-height--normal: normal;
-$line-height--default: 1.15;
+$line-height--default: 1.25;

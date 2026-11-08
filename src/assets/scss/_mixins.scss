@@ -171,3 +171,10 @@
     @content;
   }
 }
+
+@mixin breakpoint-2xl {
+  // Ultra-wide (min-width: 1440px)
+  @media (min-width: 1440px) {
+    @content;
+  }
+}

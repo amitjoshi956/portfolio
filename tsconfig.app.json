@@ -26,11 +26,16 @@
 
     /* Path aliases */
     "paths": {
+      "@api": ["./src/api/index.ts"],
+      "@api/*": ["./src/api/*"],
+      "@controllers": ["./src/controllers/index.ts"],
+      "@controllers/*": ["./src/controllers/*"],
+      "@features/*": ["./src/features/*"],
+      "@widgets/*": ["./src/widgets/*"],
       "@assets/*": ["./src/assets/*"],
+      "@components": ["./src/components/index.ts"],
       "@components/*": ["./src/components/*"],
-      "@pages/*": ["./src/pages/*"],
       "@config/*": ["./src/config/*"],
-      "@base/*": ["./src/base/*"],
       "@common/*": ["./src/common/*"]
     }
   },

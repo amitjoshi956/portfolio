@@ -1,24 +1,32 @@
 import { type FC, useState } from "react";
-import type { TabItem as TTabItem } from "@base/type";
 import TabItem from "./TabItem";
 
 import "./TabView.scss";
 
+export type TabItem = {
+  id: string;
+  label: string;
+  Content: FC;
+  onClick?: (id: string) => void;
+};
+
 type TabViewProps = {
   activeTabId?: string;
-  tabs: TTabItem[];
+  tabs: TabItem[];
 };
 
 const TabView: FC<TabViewProps> = ({ activeTabId = "", tabs }) => {
-  const [activeId, setActiveId] = useState(activeTabId || tabs[0].id);
+  const [activeId, setActiveId] = useState(activeTabId || tabs[0]?.id || "");
 
   const handleTabClick = (tabId: string, tabIndex: number) => {
     setActiveId(tabId);
-    tabs[tabIndex].onClick?.(tabId);
+    tabs[tabIndex]?.onClick?.(tabId);
   };
 
   const TabContent = () => {
-    const Content = tabs.find(({ id }) => id === activeId)!.Content;
+    const current = tabs.find(({ id }) => id === activeId);
+    if (!current) return null;
+    const Content = current.Content;
     return <Content />;
   };
 
@@ -34,7 +42,7 @@ const TabView: FC<TabViewProps> = ({ activeTabId = "", tabs }) => {
                 {...tab}
                 key={tab.id}
                 isActive={isTabActive}
-                onClick={(tabId) => handleTabClick(tabId, idx)}
+                onClick={(tabId: string) => handleTabClick(tabId, idx)}
               />
             );
           })}

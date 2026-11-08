@@ -17,6 +17,10 @@ import {
   ArrowRight01Icon as IcChevronRight,
   LinkForwardIcon as IcLinkForward,
   CheckmarkCircle02Icon as IcCheckedCircle,
+  Sun01Icon as IcSun,
+  Moon02Icon as IcMoon,
+  VolumeHighIcon as IcVolumeHigh,
+  VolumeMute01Icon as IcVolumeMute,
 } from "@hugeicons/core-free-icons";
 
 export {
@@ -38,4 +42,8 @@ export {
   IcChevronRight,
   IcLinkForward,
   IcCheckedCircle,
+  IcSun,
+  IcMoon,
+  IcVolumeHigh,
+  IcVolumeMute,
 };

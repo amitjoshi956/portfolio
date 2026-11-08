@@ -58,21 +58,24 @@ const Carousel = <T extends CarouselItem>({
     return () => window.removeEventListener("resize", checkOverflow);
   }, [checkOverflow, data]);
 
-  const handleScroll = (direction: "left" | "right") => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
+  const handleScroll = useCallback(
+    (direction: "left" | "right") => {
+      const container = scrollContainerRef.current;
+      if (!container) return;
 
-    const firstItem = container.firstElementChild as HTMLElement;
-    if (!firstItem) return;
+      const firstItem = container.firstElementChild as HTMLElement;
+      if (!firstItem) return;
 
-    const itemWidth = firstItem.offsetWidth;
-    const scrollAmount = (itemWidth + gap) * itemsToScroll;
+      const itemWidth = firstItem.offsetWidth;
+      const scrollAmount = (itemWidth + gap) * itemsToScroll;
 
-    container.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
-      behavior: "smooth",
-    });
-  };
+      container.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    },
+    [gap, itemsToScroll]
+  );
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
@@ -84,7 +87,7 @@ const Carousel = <T extends CarouselItem>({
         handleScroll("right");
       }
     },
-    [itemsToScroll, gap]
+    [handleScroll]
   );
 
   useEffect(() => {
