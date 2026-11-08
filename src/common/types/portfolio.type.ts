@@ -37,3 +37,4 @@ export type Project = {
   liveUrl?: string;
   highlights?: string[];
 };
+

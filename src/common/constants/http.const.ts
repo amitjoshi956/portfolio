@@ -50,3 +50,4 @@ export const ContentType = {
   FORM_DATA: "multipart/form-data",
   TEXT_PLAIN: "text/plain",
 } as const;
+

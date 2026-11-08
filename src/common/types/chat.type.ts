@@ -13,3 +13,4 @@ export interface ChatStreamRequest {
 }
 
 export type StreamChunkHandler = (chunk: string) => void;
+
