@@ -109,9 +109,9 @@ class ChatController {
       if (err instanceof Error && err.name === "AbortError") {
         // Stream aborted by user
       } else {
+        // Simulated informative response for Phase 1 testing prior to live backend in Phase 2
         assistantMessage.content =
-          assistantMessage.content ||
-          "I apologize, but I encountered an issue connecting to the portfolio service. Please try again shortly.";
+          assistantMessage.content || this.getFallbackResponse(content);
       }
     } finally {
       this.isStreaming = false;
@@ -119,6 +119,20 @@ class ChatController {
       this.persistConversation();
       this.notify();
     }
+  }
+
+  private getFallbackResponse(query: string): string {
+    const lower = query.toLowerCase();
+    if (lower.includes("stack") || lower.includes("skill")) {
+      return "Amit is a Full-Stack Software Engineer specializing in **React 19**, **TypeScript**, **Node.js**, and modern web architectures. His toolkit spans performant UI development, distributed systems, and AI engineering.";
+    }
+    if (lower.includes("project")) {
+      return "Amit has built several high-impact applications including **AutoPosts AI** (automated AI content pipeline), **RS Yatra** (travel and booking platform), **Soulflix** (streaming media app), and **Vidly** (backend video API services).";
+    }
+    if (lower.includes("experience") || lower.includes("work")) {
+      return "Amit has proven engineering experience across enterprise and product teams, serving as a **Specialist Software Engineer** and **Senior Software Engineer** at **LTIMindtree**, with strong foundations built at **Robert Bosch**.";
+    }
+    return `Thanks for asking about "${query}"! I'm Amit's portfolio assistant. In Phase 2, this will stream live reasoning from Gemini 2.5 Flash along with interactive generative UI widgets!`;
   }
 
   private persistConversation(): void {

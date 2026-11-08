@@ -1,0 +1,73 @@
+@use "@assets/scss/mixins" as mixin;
+@use "@assets/scss/typography" as typ;
+
+.message-list {
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  &--empty {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    min-height: 55vh;
+    padding: clamp(20px, 4vw, 40px) 0;
+  }
+
+  &__welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    animation: welcome-fade-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  &__title {
+    font-size: typ.$font-size-hero;
+    font-weight: typ.$font-weight--bold;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: clamp(16px, 3vw, 24px);
+  }
+
+  &__welcome-chips {
+    width: 100%;
+  }
+
+  &--active {
+    flex: 1;
+    width: 100%;
+    padding: clamp(16px, 3vw, 28px) 0;
+  }
+
+  &__items {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__followup {
+    margin-top: mixin.toRem(8px);
+    margin-bottom: mixin.toRem(16px);
+  }
+
+  &__anchor {
+    height: 1px;
+    width: 100%;
+  }
+}
+
+@keyframes welcome-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

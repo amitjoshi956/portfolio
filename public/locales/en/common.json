@@ -158,5 +158,22 @@
   },
   "carousel": {
     "noData": "No data available"
+  },
+  "a11y": {
+    "skipToInput": "Skip to chat input",
+    "brandLogo": "Amit Joshi",
+    "unmuteAudio": "Unmute audio",
+    "muteAudio": "Mute audio",
+    "switchToLight": "Switch to light theme",
+    "switchToDark": "Switch to dark theme"
+  },
+  "chat": {
+    "welcomeTitle": "Ask me anything about Amit",
+    "inputPlaceholder": "Ask me anything about Amit...",
+    "sendMessage": "Send message",
+    "stopGenerating": "Stop generating",
+    "suggestionsGroup": "Suggested questions",
+    "askSuggestion": "Ask: {{suggestion}}",
+    "logLabel": "Conversation with Amit's portfolio assistant"
   }
 }
