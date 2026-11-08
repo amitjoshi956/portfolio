@@ -1,14 +1,10 @@
 import { AppConfig } from "@config/constants";
+import type { ChatMessage } from "@common/types";
 
 export interface StoredConversation {
   id: string;
   title?: string;
-  messages: Array<{
-    id: string;
-    role: "user" | "assistant" | "system";
-    content: string;
-    timestamp: number;
-  }>;
+  messages: ChatMessage[];
   createdAt: number;
   updatedAt: number;
 }
@@ -152,3 +148,4 @@ class StorageController {
 }
 
 export const storageController = new StorageController();
+

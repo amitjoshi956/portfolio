@@ -1,9 +1,9 @@
 import type { FC } from "react";
-import type { TabItem as TTabItem } from "../TabView";
+import type { TabItem as TabItemData } from "@common/types";
 
 import "./TabItem.scss";
 
-export type TabItemProps = TTabItem & {
+export type TabItemProps = TabItemData & {
   isActive?: boolean;
 };
 

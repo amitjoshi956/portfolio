@@ -1,4 +1,5 @@
 import { AppConfig } from "@config/constants";
+import { HttpStatus, HttpHeader, ContentType } from "@common/constants";
 
 export class ApiError extends Error {
   status: number;
@@ -34,7 +35,7 @@ export const apiClient = async <T>(
       ...fetchOptions,
       signal: fetchOptions.signal || controller.signal,
       headers: {
-        "Content-Type": "application/json",
+        [HttpHeader.CONTENT_TYPE]: ContentType.JSON,
         ...fetchOptions.headers,
       },
     });
@@ -55,7 +56,7 @@ export const apiClient = async <T>(
       );
     }
 
-    if (response.status === 204) {
+    if (response.status === HttpStatus.NO_CONTENT) {
       return {} as T;
     }
 

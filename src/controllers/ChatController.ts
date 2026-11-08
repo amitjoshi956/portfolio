@@ -1,4 +1,5 @@
-import { chatService, type ChatMessage } from "@api/services/chat.service";
+import { chatService } from "@api/services/chat.service";
+import type { ChatMessage } from "@common/types";
 import { storageController, type StoredConversation } from "./StorageController";
 import { AppConfig } from "@config/constants";
 
@@ -145,3 +146,4 @@ class ChatController {
 }
 
 export const chatController = new ChatController();
+

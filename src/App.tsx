@@ -3,14 +3,9 @@ import { queryClient, useHealthCheck } from "@api";
 import ChatLayout from "@features/chat/ChatLayout";
 
 function AppContent() {
-  // Silent health check query on mount
   useHealthCheck();
 
-  return (
-    <ChatLayout>
-      {/* Shell initialized for Phase 1 */}
-    </ChatLayout>
-  );
+  return <ChatLayout>{/* Shell initialized for Phase 1 */}</ChatLayout>;
 }
 
 function App() {

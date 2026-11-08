@@ -36,6 +36,7 @@
       "@components": ["./src/components/index.ts"],
       "@components/*": ["./src/components/*"],
       "@config/*": ["./src/config/*"],
+      "@common": ["./src/common/index.ts"],
       "@common/*": ["./src/common/*"]
     }
   },

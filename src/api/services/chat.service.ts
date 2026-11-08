@@ -1,18 +1,6 @@
 import { AppConfig } from "@config/constants";
-
-export interface ChatMessage {
-  id: string;
-  role: "user" | "assistant" | "system";
-  content: string;
-  timestamp: number;
-}
-
-export interface ChatStreamRequest {
-  messages: Array<Pick<ChatMessage, "role" | "content">>;
-  conversationId: string;
-}
-
-export type StreamChunkHandler = (chunk: string) => void;
+import { HttpMethod, HttpHeader, ContentType } from "@common/constants";
+import type { ChatStreamRequest, StreamChunkHandler } from "@common/types";
 
 export const chatService = {
   streamChat: async (
@@ -23,10 +11,10 @@ export const chatService = {
     const url = `${AppConfig.api.baseUrl}${AppConfig.api.endpoints.chatStream}`;
 
     const response = await fetch(url, {
-      method: "POST",
+      method: HttpMethod.POST,
       headers: {
-        "Content-Type": "application/json",
-        Accept: "text/event-stream",
+        [HttpHeader.CONTENT_TYPE]: ContentType.JSON,
+        [HttpHeader.ACCEPT]: ContentType.EVENT_STREAM,
       },
       body: JSON.stringify(request),
       signal,

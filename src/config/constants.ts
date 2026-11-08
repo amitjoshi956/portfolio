@@ -28,3 +28,4 @@ export const AppConfig = {
     storageKey: "aj_portfolio_audio_muted",
   },
 } as const;
+

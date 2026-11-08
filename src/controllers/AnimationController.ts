@@ -36,3 +36,4 @@ class AnimationController {
 }
 
 export const animationController = new AnimationController();
+

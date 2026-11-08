@@ -1,18 +1,14 @@
 import { type FC, useState } from "react";
+import type { TabItem as TabItemData } from "@common/types";
 import TabItem from "./TabItem";
 
 import "./TabView.scss";
 
-export type TabItem = {
-  id: string;
-  label: string;
-  Content: FC;
-  onClick?: (id: string) => void;
-};
+export type { TabItemData };
 
 type TabViewProps = {
   activeTabId?: string;
-  tabs: TabItem[];
+  tabs: TabItemData[];
 };
 
 const TabView: FC<TabViewProps> = ({ activeTabId = "", tabs }) => {

@@ -1,5 +1,6 @@
 import { apiClient } from "../client";
 import { AppConfig } from "@config/constants";
+import { HttpMethod } from "@common/constants";
 
 export interface ContactPayload {
   email: string;
@@ -15,7 +16,7 @@ export interface ContactResponse {
 export const contactService = {
   submitContactRequest: async (payload: ContactPayload): Promise<ContactResponse> => {
     return apiClient<ContactResponse>(AppConfig.api.endpoints.contactRequest, {
-      method: "POST",
+      method: HttpMethod.POST,
       body: JSON.stringify(payload),
     });
   },

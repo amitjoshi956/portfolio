@@ -11,3 +11,4 @@ export const healthService = {
     return apiClient<HealthResponse>(AppConfig.api.endpoints.healthCheck);
   },
 };
+
