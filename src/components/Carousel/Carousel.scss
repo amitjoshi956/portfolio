@@ -1,6 +1,7 @@
 @use "@assets/scss/colors" as color;
 @use "@assets/scss/mixins" as mixin;
 @use "@assets/scss/typography" as typ;
+@use "@assets/scss/variables" as var;
 
 .carousel {
   position: relative;
@@ -81,7 +82,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 10;
+    z-index: var.$z-index--l1;
     width: mixin.toRem(48px);
     height: mixin.toRem(48px);
     border-radius: 50%;

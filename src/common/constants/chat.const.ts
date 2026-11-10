@@ -1,5 +1,7 @@
-export const DefaultSuggestions = [
-  "What's his tech stack?",
-  "Show me his projects",
-  "Walk me through his experience",
+export const DefaultSuggestionKeys = [
+  "chat.defaultSuggestions.techStack",
+  "chat.defaultSuggestions.projects",
+  "chat.defaultSuggestions.experience",
 ] as const;
+
+export type DefaultSuggestionKey = (typeof DefaultSuggestionKeys)[number];

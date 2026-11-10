@@ -1,3 +1,4 @@
+// Z-Index Elevation Layers
 $z-index--l0: 0;
 $z-index--l1: 10;
 $z-index--l2: 20;
@@ -5,3 +6,11 @@ $z-index--l3: 30;
 $z-index--l4: 40;
 $z-index--l5: 50;
 $z-index--l6: 60;
+
+// Semantic Z-Index Roles
+$z-index--content: $z-index--l1;
+$z-index--input: $z-index--l2;
+$z-index--sticky: $z-index--l3;
+$z-index--header: $z-index--l5;
+$z-index--modal: $z-index--l6;
+$z-index--skip-link: 1000;

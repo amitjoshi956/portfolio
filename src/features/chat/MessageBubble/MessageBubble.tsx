@@ -56,3 +56,4 @@ const MessageBubble: FC<MessageBubbleProps> = ({
 };
 
 export default MessageBubble;
+

@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { classnames } from "@common/utils";
-import { DefaultSuggestions } from "@common/constants";
+import { DefaultSuggestionKeys } from "@common/constants";
 
 import "./SuggestionChips.scss";
 
@@ -13,15 +13,18 @@ export interface SuggestionChipsProps {
 }
 
 const SuggestionChips: FC<SuggestionChipsProps> = ({
-  suggestions = DefaultSuggestions,
+  suggestions,
   onSelect,
   disabled = false,
   className = "",
 }) => {
   const { t } = useTranslation();
 
+  const resolvedSuggestions =
+    suggestions ?? DefaultSuggestionKeys.map((key) => t(key));
+
   // Enforce max 3 suggestions as per architecture guidelines
-  const activeSuggestions = suggestions.slice(0, 3);
+  const activeSuggestions = resolvedSuggestions.slice(0, 3);
 
   if (activeSuggestions.length === 0) return null;
 

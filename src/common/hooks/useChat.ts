@@ -3,14 +3,20 @@ import { chatController } from "@controllers/ChatController";
 import type { ChatMessage } from "@common/types";
 
 export const useChat = () => {
-  const [messages, setMessages] = useState<ChatMessage[]>(chatController.getMessages());
-  const [isStreaming, setIsStreaming] = useState<boolean>(chatController.getIsStreaming());
+  const [messages, setMessages] = useState<ChatMessage[]>(
+    chatController.getMessages(),
+  );
+  const [isStreaming, setIsStreaming] = useState<boolean>(
+    chatController.getIsStreaming(),
+  );
 
   useEffect(() => {
-    const unsubscribe = chatController.subscribe((newMessages, streamingState) => {
-      setMessages([...newMessages]);
-      setIsStreaming(streamingState);
-    });
+    const unsubscribe = chatController.subscribe(
+      (newMessages, streamingState) => {
+        setMessages([...newMessages]);
+        setIsStreaming(streamingState);
+      },
+    );
     return () => unsubscribe();
   }, []);
 

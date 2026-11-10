@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import type { ChatMessage } from "@common/types";
 import MessageBubble from "../MessageBubble";
 import SuggestionChips from "../SuggestionChips";
-import { DefaultSuggestions } from "@common/constants";
 
 import "./MessageList.scss";
 
@@ -38,10 +37,7 @@ const MessageList: FC<MessageListProps> = ({
           </h1>
 
           <div className="message-list__welcome-chips">
-            <SuggestionChips
-              suggestions={DefaultSuggestions}
-              onSelect={onSelectSuggestion}
-            />
+            <SuggestionChips onSelect={onSelectSuggestion} />
           </div>
         </div>
       </div>

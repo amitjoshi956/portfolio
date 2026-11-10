@@ -10,10 +10,10 @@
 
   &--empty {
     flex: 1;
+    display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 55vh;
-    padding: clamp(20px, 4vw, 40px) 0;
+    padding: mixin.toRem(16px) 0;
   }
 
   &__welcome {
@@ -27,11 +27,11 @@
 
   &__title {
     font-size: typ.$font-size-hero;
-    font-weight: typ.$font-weight--bold;
+    font-weight: typ.$font-weight--regular;
     color: var(--color-text-primary);
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    margin-bottom: clamp(16px, 3vw, 24px);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin-bottom: clamp(14px, 2.5vw, 20px);
   }
 
   &__welcome-chips {

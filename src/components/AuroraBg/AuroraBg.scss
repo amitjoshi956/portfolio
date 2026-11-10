@@ -1,10 +1,14 @@
 @use "@assets/scss/colors" as color;
+@use "@assets/scss/variables" as var;
 
 .aurora-bg {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: var.$z-index--l0;
 
   &__wave {
     position: absolute;

@@ -1,12 +1,13 @@
 @use "@assets/scss/mixins" as mixin;
 @use "@assets/scss/typography" as typ;
+@use "@assets/scss/variables" as var;
 
 .chat-input {
   width: 100%;
   max-width: 750px;
   margin: 0 auto;
   position: relative;
-  z-index: 20;
+  z-index: var.$z-index--input;
 
   &__wrapper {
     display: flex;
@@ -14,9 +15,11 @@
     background: var(--color-bg-surface);
     border: 1px solid var(--color-border-subtle);
     border-radius: mixin.toRem(16px);
-    padding: mixin.toRem(6px) mixin.toRem(10px) mixin.toRem(6px) mixin.toRem(8px);
-    column-gap: mixin.toRem(8px);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    padding: mixin.toRem(6px) mixin.toRem(8px) mixin.toRem(6px) mixin.toRem(8px);
+    column-gap: mixin.toRem(6px);
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
 
     &:focus-within {
       border-color: var(--color-accent);
@@ -53,14 +56,15 @@
   &__actions {
     display: flex;
     align-items: center;
-    padding-bottom: mixin.toRem(4px);
+    padding-bottom: mixin.toRem(3px);
   }
 
   &__btn {
     appearance: none;
     border: none;
-    width: mixin.toRem(32px);
-    height: mixin.toRem(32px);
+    background: transparent;
+    width: mixin.toRem(34px);
+    height: mixin.toRem(34px);
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
@@ -69,12 +73,13 @@
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 
     &--send {
-      background: var(--color-accent);
-      color: var(--color-bg-primary);
+      background: transparent;
+      color: var(--color-accent);
 
       &:hover:not(:disabled) {
-        background: var(--color-accent-hover);
-        transform: scale(1.05);
+        color: var(--color-accent-hover);
+        background: rgba(255, 255, 255, 0.05);
+        transform: scale(1.08);
       }
 
       &:active:not(:disabled) {
@@ -82,19 +87,22 @@
       }
 
       &:disabled {
-        opacity: 0.35;
+        opacity: 0.25;
         cursor: not-allowed;
-        background: var(--color-border-subtle);
         color: var(--color-text-secondary);
+        background: transparent;
       }
     }
 
     &--stop {
-      background: var(--color-error);
-      color: #ffffff;
+      background: transparent;
+      color: var(--color-text-secondary);
+      border: 1px solid var(--color-border-subtle);
 
       &:hover {
-        opacity: 0.9;
+        color: var(--color-text-primary);
+        border-color: var(--color-text-secondary);
+        background: rgba(255, 255, 255, 0.05);
         transform: scale(1.05);
       }
 
@@ -110,7 +118,9 @@
   }
 
   &__btn-icon {
-    width: mixin.toRem(16px);
-    height: mixin.toRem(16px);
+    width: mixin.toRem(18px);
+    height: mixin.toRem(18px);
+    stroke: currentColor;
+    fill: none;
   }
 }

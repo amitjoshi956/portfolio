@@ -12,15 +12,11 @@
   margin: mixin.toRem(16px) auto;
 
   @include mixin.breakpoint-sm {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
     gap: mixin.toRem(8px);
-    justify-content: flex-start;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    padding-bottom: mixin.toRem(6px);
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    margin: mixin.toRem(12px) auto;
   }
 
   &__pill {
@@ -39,6 +35,14 @@
     display: inline-flex;
     align-items: center;
     user-select: none;
+
+    @include mixin.breakpoint-sm {
+      width: 100%;
+      justify-content: center;
+      text-align: center;
+      white-space: normal;
+      padding: mixin.toRem(10px) mixin.toRem(16px);
+    }
 
     &:hover:not(:disabled) {
       color: var(--color-text-primary);
@@ -63,6 +67,6 @@
   }
 
   &__text {
-    line-height: 1.2;
+    line-height: 1.25;
   }
 }
