@@ -2,16 +2,22 @@ import { useState, useEffect, type FC, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { themeController, type Theme } from "@controllers/ThemeController";
 import { audioController } from "@controllers/AudioController";
-import AuroraBg from "@components/AuroraBg";
 import Icon from "@components/Icon";
-import { IcSun, IcMoon, IcVolumeHigh, IcVolumeMute } from "@assets/icons";
+import {
+  IcSun,
+  IcMoon,
+  IcVolumeHigh,
+  IcVolumeMute,
+  IcAdd,
+} from "@assets/icons";
 import LogoAj from "@assets/image/logo-aj.svg";
+import { chatController } from "@controllers/ChatController";
 
 import "./ChatLayout.scss";
 
-interface ChatLayoutProps {
+type ChatLayoutProps = {
   children?: ReactNode;
-}
+};
 
 const ChatLayout: FC<ChatLayoutProps> = ({ children }) => {
   const { t } = useTranslation();
@@ -34,6 +40,10 @@ const ChatLayout: FC<ChatLayoutProps> = ({ children }) => {
     setIsMuted(nextMuted);
   };
 
+  const handleNewChat = () => {
+    chatController.newChat();
+  };
+
   return (
     <div className="chat-layout">
       <a href="#chat-input" className="skip-link">
@@ -53,6 +63,16 @@ const ChatLayout: FC<ChatLayoutProps> = ({ children }) => {
         </div>
 
         <div className="chat-layout__actions">
+          <button
+            type="button"
+            className="chat-layout__action-btn"
+            aria-label={t("chat.newChat", "New conversation")}
+            title={t("chat.newChat", "New conversation")}
+            onClick={handleNewChat}
+          >
+            <Icon className="chat-layout__action-icon" src={IcAdd} />
+          </button>
+
           <button
             type="button"
             className="chat-layout__action-btn"
@@ -92,11 +112,8 @@ const ChatLayout: FC<ChatLayoutProps> = ({ children }) => {
       <main className="chat-layout__main" id="chat-container">
         <div className="chat-layout__content">{children}</div>
       </main>
-
-      <AuroraBg />
     </div>
   );
 };
 
 export default ChatLayout;
-

@@ -1,14 +1,14 @@
 import type { FC } from "react";
-import Markdown from "react-markdown";
 import type { ChatMessage } from "@common/types";
 import { classnames } from "@common/utils";
+import StreamRenderer from "../StreamRenderer";
 
 import "./MessageBubble.scss";
 
-export interface MessageBubbleProps {
+export type MessageBubbleProps = {
   message: ChatMessage;
   isStreaming?: boolean;
-}
+};
 
 const MessageBubble: FC<MessageBubbleProps> = ({
   message,
@@ -20,6 +20,7 @@ const MessageBubble: FC<MessageBubbleProps> = ({
     "message-bubble": true,
     "message-bubble--user": isUser,
     "message-bubble--assistant": !isUser,
+    "message-bubble--error": message.status === "error",
   });
 
   if (isUser) {
@@ -37,12 +38,10 @@ const MessageBubble: FC<MessageBubbleProps> = ({
     <div className={rootClass}>
       <div className="message-bubble__assistant-content">
         {message.content ? (
-          <div className="message-bubble__markdown">
-            <Markdown>{message.content}</Markdown>
-            {isStreaming && (
-              <span className="message-bubble__cursor" aria-hidden="true" />
-            )}
-          </div>
+          <StreamRenderer
+            content={message.content}
+            isStreaming={isStreaming}
+          />
         ) : isStreaming ? (
           <div className="message-bubble__typing" aria-label="Thinking">
             <span className="message-bubble__typing-dot" />
@@ -56,4 +55,3 @@ const MessageBubble: FC<MessageBubbleProps> = ({
 };
 
 export default MessageBubble;
-

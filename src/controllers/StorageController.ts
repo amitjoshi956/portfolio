@@ -1,13 +1,13 @@
-import { AppConfig } from "@config/constants";
+import { StorageConfig } from "@common/constants";
 import type { ChatMessage } from "@common/types";
 
-export interface StoredConversation {
+export type StoredConversation = {
   id: string;
   title?: string;
   messages: ChatMessage[];
   createdAt: number;
   updatedAt: number;
-}
+};
 
 class StorageController {
   private dbPromise: Promise<IDBDatabase> | null = null;
@@ -21,17 +21,21 @@ class StorageController {
       }
 
       const request = indexedDB.open(
-        AppConfig.storage.dbName,
-        AppConfig.storage.dbVersion
+        StorageConfig.DB_NAME,
+        StorageConfig.DB_VERSION
       );
 
       request.onupgradeneeded = (event) => {
         const db = (event.target as IDBOpenDBRequest).result;
-        if (!db.objectStoreNames.contains(AppConfig.storage.chatStoreName)) {
-          const chatStore = db.createObjectStore(AppConfig.storage.chatStoreName, {
-            keyPath: "id",
+        if (!db.objectStoreNames.contains(StorageConfig.CHAT_STORE_NAME)) {
+          const chatStore = db.createObjectStore(StorageConfig.CHAT_STORE_NAME, {
+            keyPath: StorageConfig.INDEX_KEY_PATH,
           });
-          chatStore.createIndex("updatedAt", "updatedAt", { unique: false });
+          chatStore.createIndex(
+            StorageConfig.INDEX_UPDATED_AT,
+            StorageConfig.INDEX_UPDATED_AT,
+            { unique: false }
+          );
         }
       };
 
@@ -46,8 +50,11 @@ class StorageController {
     try {
       const db = await this.initDb();
       return new Promise((resolve, reject) => {
-        const tx = db.transaction(AppConfig.storage.chatStoreName, "readwrite");
-        const store = tx.objectStore(AppConfig.storage.chatStoreName);
+        const tx = db.transaction(
+          StorageConfig.CHAT_STORE_NAME,
+          StorageConfig.TRANSACTION_READWRITE
+        );
+        const store = tx.objectStore(StorageConfig.CHAT_STORE_NAME);
         const req = store.put(conversation);
         req.onsuccess = () => resolve();
         req.onerror = () => reject(req.error);
@@ -61,15 +68,19 @@ class StorageController {
     try {
       const db = await this.initDb();
       return new Promise((resolve, reject) => {
-        const tx = db.transaction(AppConfig.storage.chatStoreName, "readonly");
-        const store = tx.objectStore(AppConfig.storage.chatStoreName);
+        const tx = db.transaction(
+          StorageConfig.CHAT_STORE_NAME,
+          StorageConfig.TRANSACTION_READONLY
+        );
+        const store = tx.objectStore(StorageConfig.CHAT_STORE_NAME);
         const req = store.get(id);
         req.onsuccess = () => {
           const result = req.result as StoredConversation | undefined;
           if (!result) return resolve(null);
 
           // Check 1-week TTL
-          const isExpired = Date.now() - result.updatedAt > AppConfig.storage.chatTtlMs;
+          const isExpired =
+            Date.now() - result.updatedAt > StorageConfig.CHAT_TTL_MS;
           if (isExpired) {
             this.deleteConversation(id);
             return resolve(null);
@@ -88,8 +99,11 @@ class StorageController {
     try {
       const db = await this.initDb();
       return new Promise((resolve, reject) => {
-        const tx = db.transaction(AppConfig.storage.chatStoreName, "readwrite");
-        const store = tx.objectStore(AppConfig.storage.chatStoreName);
+        const tx = db.transaction(
+          StorageConfig.CHAT_STORE_NAME,
+          StorageConfig.TRANSACTION_READWRITE
+        );
+        const store = tx.objectStore(StorageConfig.CHAT_STORE_NAME);
         const req = store.delete(id);
         req.onsuccess = () => resolve();
         req.onerror = () => reject(req.error);
@@ -103,8 +117,11 @@ class StorageController {
     try {
       const db = await this.initDb();
       return new Promise((resolve, reject) => {
-        const tx = db.transaction(AppConfig.storage.chatStoreName, "readwrite");
-        const store = tx.objectStore(AppConfig.storage.chatStoreName);
+        const tx = db.transaction(
+          StorageConfig.CHAT_STORE_NAME,
+          StorageConfig.TRANSACTION_READWRITE
+        );
+        const store = tx.objectStore(StorageConfig.CHAT_STORE_NAME);
         const req = store.openCursor();
         const now = Date.now();
 
@@ -112,7 +129,7 @@ class StorageController {
           const cursor = (e.target as IDBRequest<IDBCursorWithValue>).result;
           if (cursor) {
             const item = cursor.value as StoredConversation;
-            if (now - item.updatedAt > AppConfig.storage.chatTtlMs) {
+            if (now - item.updatedAt > StorageConfig.CHAT_TTL_MS) {
               cursor.delete();
             }
             cursor.continue();
@@ -124,6 +141,39 @@ class StorageController {
       });
     } catch {
       // Ignore
+    }
+  }
+
+  async getRecentConversations(limit = 10): Promise<StoredConversation[]> {
+    try {
+      const db = await this.initDb();
+      return new Promise((resolve) => {
+        const tx = db.transaction(
+          StorageConfig.CHAT_STORE_NAME,
+          StorageConfig.TRANSACTION_READONLY
+        );
+        const store = tx.objectStore(StorageConfig.CHAT_STORE_NAME);
+        const index = store.index(StorageConfig.INDEX_UPDATED_AT);
+        const req = index.openCursor(null, StorageConfig.CURSOR_DIRECTION_PREV);
+        const list: StoredConversation[] = [];
+        const now = Date.now();
+
+        req.onsuccess = (e) => {
+          const cursor = (e.target as IDBRequest<IDBCursorWithValue>).result;
+          if (cursor && list.length < limit) {
+            const item = cursor.value as StoredConversation;
+            if (now - item.updatedAt <= StorageConfig.CHAT_TTL_MS) {
+              list.push(item);
+            }
+            cursor.continue();
+          } else {
+            resolve(list);
+          }
+        };
+        req.onerror = () => resolve([]);
+      });
+    } catch {
+      return [];
     }
   }
 
@@ -148,4 +198,3 @@ class StorageController {
 }
 
 export const storageController = new StorageController();
-

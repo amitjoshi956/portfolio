@@ -1,7 +1,13 @@
-import { chatService } from "@api/services/chat.service";
+import i18next from "i18next";
+import { ChatService } from "@api/services/chat.service";
+import { ApiError } from "@api/client";
 import type { ChatMessage } from "@common/types";
-import { storageController, type StoredConversation } from "./StorageController";
-import { AppConfig } from "@config/constants";
+import { MessageRole, MessageStatus, ChatConfig } from "@common/constants";
+import {
+  storageController,
+  type StoredConversation,
+} from "./StorageController";
+import { parseStreamContent } from "@features/chat/StreamRenderer/streamParser";
 
 type ChatObserver = (messages: ChatMessage[], isStreaming: boolean) => void;
 
@@ -14,10 +20,25 @@ class ChatController {
 
   constructor() {
     this.currentConversationId = this.generateId();
+    this.initFromStorage();
   }
 
   private generateId(): string {
     return `conv_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
+  }
+
+  private async initFromStorage(): Promise<void> {
+    try {
+      await storageController.pruneExpiredConversations();
+      const recent = await storageController.getRecentConversations(1);
+      if (recent.length > 0 && recent[0].messages.length > 0) {
+        this.currentConversationId = recent[0].id;
+        this.messages = recent[0].messages;
+        this.notify();
+      }
+    } catch {
+      // Clean fallback if IndexedDB fails
+    }
   }
 
   getConversationId(): string {
@@ -47,6 +68,7 @@ class ChatController {
     if (this.isStreaming) {
       this.stopStreaming();
     }
+    // Retain previous conversation in IndexedDB (do not delete) and start a new thread
     this.currentConversationId = this.generateId();
     this.messages = [];
     this.notify();
@@ -59,6 +81,18 @@ class ChatController {
       this.currentAbortController = null;
     }
     this.isStreaming = false;
+
+    // Finalize latest assistant message if stopped early
+    const lastMsg = this.messages[this.messages.length - 1];
+    if (lastMsg && lastMsg.role === MessageRole.ASSISTANT) {
+      lastMsg.status = MessageStatus.COMPLETE;
+      const parsed = parseStreamContent(lastMsg.content, false);
+      if (parsed.suggestions.length > 0) {
+        lastMsg.followups = parsed.suggestions;
+      }
+    }
+
+    this.persistConversation();
     this.notify();
   }
 
@@ -67,9 +101,10 @@ class ChatController {
 
     const userMessage: ChatMessage = {
       id: `msg_${Date.now()}_u`,
-      role: "user",
+      role: MessageRole.USER,
       content: content.trim(),
       timestamp: Date.now(),
+      status: MessageStatus.COMPLETE,
     };
 
     this.messages.push(userMessage);
@@ -77,9 +112,10 @@ class ChatController {
     const assistantMessageId = `msg_${Date.now()}_a`;
     const assistantMessage: ChatMessage = {
       id: assistantMessageId,
-      role: "assistant",
+      role: MessageRole.ASSISTANT,
       content: "",
       timestamp: Date.now(),
+      status: MessageStatus.STREAMING,
     };
 
     this.messages.push(assistantMessage);
@@ -91,27 +127,58 @@ class ChatController {
     try {
       const historyToSend = this.messages
         .slice(0, -1) // Exclude current empty assistant message
-        .slice(-AppConfig.chat.maxHistoryTurns)
+        .slice(-ChatConfig.maxHistoryTurns)
         .map((m) => ({ role: m.role, content: m.content }));
 
-      await chatService.streamChat(
+      await ChatService.streamChat(
         {
           messages: historyToSend,
           conversationId: this.currentConversationId,
         },
         (chunk) => {
           assistantMessage.content += chunk;
+          // Extract suggestions mid-stream as they arrive
+          const parsed = parseStreamContent(assistantMessage.content, true);
+          if (parsed.suggestions.length > 0) {
+            assistantMessage.followups = parsed.suggestions;
+          }
           this.notify();
         },
-        this.currentAbortController.signal
+        this.currentAbortController.signal,
       );
+
+      assistantMessage.status = MessageStatus.COMPLETE;
+      // Final parse after stream completion
+      const parsed = parseStreamContent(assistantMessage.content, false);
+      if (parsed.suggestions.length > 0) {
+        assistantMessage.followups = parsed.suggestions;
+      }
     } catch (err: unknown) {
       if (err instanceof Error && err.name === "AbortError") {
-        // Stream aborted by user
+        // Stream deliberately aborted by user via "Stop generating"
+        assistantMessage.status = MessageStatus.COMPLETE;
+      } else if (err instanceof ApiError && err.status === 429) {
+        // Rate limit reached (20 requests / 10 minutes)
+        assistantMessage.status = MessageStatus.ERROR;
+        assistantMessage.content = i18next.t("chat.errors.rateLimit");
+        assistantMessage.followups = [
+          i18next.t("chat.fallbackFollowups.techStack"),
+          i18next.t("chat.fallbackFollowups.projects"),
+          i18next.t("chat.fallbackFollowups.experience"),
+        ];
       } else {
-        // Simulated informative response for Phase 1 testing prior to live backend in Phase 2
+        // Network or server error -> graceful fallback response
+        console.warn(
+          "Live stream encountered error, applying knowledge base response:",
+          err,
+        );
+        assistantMessage.status = MessageStatus.COMPLETE;
         assistantMessage.content =
           assistantMessage.content || this.getFallbackResponse(content);
+        const parsed = parseStreamContent(assistantMessage.content, false);
+        if (parsed.suggestions.length > 0) {
+          assistantMessage.followups = parsed.suggestions;
+        }
       }
     } finally {
       this.isStreaming = false;
@@ -123,16 +190,24 @@ class ChatController {
 
   private getFallbackResponse(query: string): string {
     const lower = query.toLowerCase();
-    if (lower.includes("stack") || lower.includes("skill")) {
-      return "Amit is a Full-Stack Software Engineer specializing in **React 19**, **TypeScript**, **Node.js**, and modern web architectures. His toolkit spans performant UI development, distributed systems, and AI engineering.";
+    if (
+      lower.includes("stack") ||
+      lower.includes("skill") ||
+      lower.includes("tech")
+    ) {
+      return i18next.t("chat.fallback.techStack");
     }
-    if (lower.includes("project")) {
-      return "Amit has built several high-impact applications including **AutoPosts AI** (automated AI content pipeline), **RS Yatra** (travel and booking platform), **Soulflix** (streaming media app), and **Vidly** (backend video API services).";
+    if (lower.includes("project") || lower.includes("work")) {
+      return i18next.t("chat.fallback.projects");
     }
-    if (lower.includes("experience") || lower.includes("work")) {
-      return "Amit has proven engineering experience across enterprise and product teams, serving as a **Specialist Software Engineer** and **Senior Software Engineer** at **LTIMindtree**, with strong foundations built at **Robert Bosch**.";
+    if (
+      lower.includes("experience") ||
+      lower.includes("career") ||
+      lower.includes("history")
+    ) {
+      return i18next.t("chat.fallback.experience");
     }
-    return `Thanks for asking about "${query}"! I'm Amit's portfolio assistant. In Phase 2, this will stream live reasoning from Gemini 2.5 Flash along with interactive generative UI widgets!`;
+    return i18next.t("chat.fallback.generic");
   }
 
   private persistConversation(): void {
@@ -160,4 +235,3 @@ class ChatController {
 }
 
 export const chatController = new ChatController();
-

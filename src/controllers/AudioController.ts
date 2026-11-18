@@ -1,4 +1,4 @@
-import { AppConfig } from "@config/constants";
+import { StorageKeys } from "@common/constants";
 import { storageController } from "./StorageController";
 
 export type SoundEffect = "contactSuccess" | "contactError";
@@ -20,7 +20,7 @@ class AudioController {
     if (typeof window === "undefined") return;
 
     this.isMuted = storageController.getItem<boolean>(
-      AppConfig.audio.storageKey,
+      StorageKeys.AUDIO_MUTED,
       false
     );
 
@@ -36,7 +36,7 @@ class AudioController {
 
   setMuted(muted: boolean): void {
     this.isMuted = muted;
-    storageController.setItem(AppConfig.audio.storageKey, muted);
+    storageController.setItem(StorageKeys.AUDIO_MUTED, muted);
   }
 
   toggleMute(): boolean {
@@ -63,4 +63,3 @@ class AudioController {
 }
 
 export const audioController = new AudioController();
-

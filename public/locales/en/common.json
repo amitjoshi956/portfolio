@@ -24,7 +24,7 @@
   "about": {
     "title": "More about me",
     "skills": "Skills",
-    "bio": "AI Powered Full Stack Engineer with 8+ years of experience in designing & building scalable web applications using React, TypeScript, Node and modern frameworks. Proven record in AI-assisted development, performance optimization, and leading high-performing developers team. Passionate about solving practical problems with high-impact solutions that create real value. Aiming to advance into an Architect's role. Beyond code, I mentor students and peers on career paths and professional growth.",
+    "bio": "AI-Powered Full Stack Engineer with 9+ years of experience in designing & building scalable web applications using React, TypeScript, Node/Bun, and modern frameworks. Proven record in AI-assisted development, performance optimization, and leading a high-performing developers team. Passionate about solving practical problems with high-impact solutions that create real value. Aiming to advance into an Architect's role.",
     "all": "All",
     "frontend": "Frontend",
     "backend": "Backend",
@@ -123,7 +123,7 @@
     "priorityDM": "Priority DM",
     "priorityDesc": "Get priority responses on your questions",
     "viewProfile": "View Profile",
-    "profileBio": "Frontend Architect | AI-Powered Developer | 8+ Years Experience",
+    "profileBio": "Frontend Architect | AI-Powered Developer | 9+ Years Experience",
     "profileDesc": "Helping developers build scalable systems and advance their careers. Free career counseling for school/college bound students."
   },
   "causes": {
@@ -172,11 +172,26 @@
     "inputPlaceholder": "Ask me anything about Amit...",
     "sendMessage": "Send message",
     "stopGenerating": "Stop generating",
+    "newChat": "New conversation",
     "suggestionsGroup": "Suggested questions",
     "askSuggestion": "Ask: {{suggestion}}",
     "logLabel": "Conversation with Amit's portfolio assistant",
     "defaultSuggestions": {
       "techStack": "What's his tech stack?",
+      "projects": "Show me his projects",
+      "experience": "Walk me through his experience"
+    },
+    "errors": {
+      "rateLimit": "⏳ **Rate limit reached**: You've sent multiple messages quickly. The assistant is taking a brief breather to respect usage limits. Please wait a few moments and try again!"
+    },
+    "fallback": {
+      "techStack": "Amit is an AI Fullstack Engineer with nearly 9 years of expertise in React, TypeScript, Node.js/Bun, and modern distributed systems.\n\n:::suggestions[\"Show me his projects\", \"Walk me through his experience\", \"How to contact Amit?\"]:::",
+      "projects": "Amit has built impactful projects including **AutoPosts.ai** (automated content pipeline), **RS Yatra** (community & retreat booking platform), **Soulflix** (streaming media app), and **Vidly** (video rental API services).\n\n:::suggestions[\"Tell me about AutoPosts.ai\", \"What's his tech stack?\", \"How can I contact Amit?\"]:::",
+      "experience": "Amit has progressive industry experience as a **Specialist Software Engineer** and **Senior Software Engineer** at **LTIMindtree**, preceded by ~3.8 years at **Robert Bosch** engineering telemetry dashboards and DSL tools.\n\n:::suggestions[\"What projects has he delivered?\", \"What is his tech stack?\", \"Get in touch\"]:::",
+      "generic": "Thanks for asking! I'm Amit's portfolio assistant. Feel free to ask about his technical skills, enterprise experience, or key projects.\n\n:::suggestions[\"What is his tech stack?\", \"Show me his projects\", \"Walk me through his experience\"]:::"
+    },
+    "fallbackFollowups": {
+      "techStack": "What is his tech stack?",
       "projects": "Show me his projects",
       "experience": "Walk me through his experience"
     }

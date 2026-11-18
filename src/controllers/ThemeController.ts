@@ -1,4 +1,4 @@
-import { AppConfig } from "@config/constants";
+import { StorageKeys } from "@common/constants";
 import { storageController } from "./StorageController";
 
 export type Theme = "dark" | "light";
@@ -17,7 +17,7 @@ class ThemeController {
     if (typeof window === "undefined") return;
 
     const savedTheme = storageController.getItem<Theme | null>(
-      AppConfig.theme.storageKey,
+      StorageKeys.THEME,
       null
     );
 
@@ -32,7 +32,7 @@ class ThemeController {
       .matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", (e) => {
         const hasManualSetting = storageController.getItem<Theme | null>(
-          AppConfig.theme.storageKey,
+          StorageKeys.THEME,
           null
         );
         if (!hasManualSetting) {
@@ -51,7 +51,7 @@ class ThemeController {
       document.documentElement.setAttribute("data-theme", theme);
     }
     if (persist) {
-      storageController.setItem(AppConfig.theme.storageKey, theme);
+      storageController.setItem(StorageKeys.THEME, theme);
     }
     this.notify();
   }
@@ -74,4 +74,3 @@ class ThemeController {
 }
 
 export const themeController = new ThemeController();
-

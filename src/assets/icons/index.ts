@@ -21,6 +21,7 @@ import {
   Moon02Icon as IcMoon,
   VolumeHighIcon as IcVolumeHigh,
   VolumeMute02Icon as IcVolumeMute,
+  Add01Icon as IcAdd,
 } from "@hugeicons/core-free-icons";
 
 export {
@@ -46,4 +47,5 @@ export {
   IcMoon,
   IcVolumeHigh,
   IcVolumeMute,
+  IcAdd,
 };

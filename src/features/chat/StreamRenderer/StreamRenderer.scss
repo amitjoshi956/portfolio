@@ -1,0 +1,99 @@
+@use "@assets/scss/mixins" as *;
+
+.stream-renderer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  color: var(--color-text-primary);
+  line-height: 1.65;
+
+  &__text {
+    p {
+      margin-bottom: 0.75rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    ul, ol {
+      margin: 0.5rem 0 0.75rem 1.25rem;
+    }
+
+    li {
+      margin-bottom: 0.35rem;
+    }
+
+    code {
+      background: var(--color-bg-surface);
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.9em;
+      border: 1px solid var(--color-border-subtle);
+    }
+
+    strong {
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+  }
+
+  &__widget-placeholder {
+    @include glass;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border: 1px solid var(--color-border-subtle);
+  }
+
+  &__widget-placeholder-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  &__widget-placeholder-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--color-accent-glow);
+    color: var(--color-accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    border: 1px solid var(--color-accent);
+  }
+
+  &__widget-placeholder-info {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+  }
+
+  &__cursor {
+    display: inline-block;
+    width: 6px;
+    height: 1.1em;
+    vertical-align: middle;
+    margin-left: 4px;
+    background-color: var(--color-accent);
+    border-radius: 1px;
+    animation: blink 0.8s infinite ease-in-out;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.1;
+  }
+}

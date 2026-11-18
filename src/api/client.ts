@@ -1,4 +1,4 @@
-import { AppConfig } from "@config/constants";
+import { ApiConfig } from "@common/constants";
 import { HttpStatus, HttpHeader, ContentType } from "@common/constants";
 
 export class ApiError extends Error {
@@ -17,15 +17,15 @@ export type RequestOptions = RequestInit & {
   timeoutMs?: number;
 };
 
-export const apiClient = async <T>(
+export const ApiClient = async <T>(
   endpoint: string,
   options: RequestOptions = {}
 ): Promise<T> => {
-  const { timeoutMs = AppConfig.api.timeoutMs, ...fetchOptions } = options;
+  const { timeoutMs = ApiConfig.timeoutMs, ...fetchOptions } = options;
 
   const url = endpoint.startsWith("http")
     ? endpoint
-    : `${AppConfig.api.baseUrl}${endpoint}`;
+    : `${ApiConfig.baseUrl}${endpoint}`;
 
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeoutMs);

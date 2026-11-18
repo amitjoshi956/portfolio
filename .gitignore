@@ -12,6 +12,13 @@ dist
 dist-ssr
 *.local
 
+# Environment variables
+.env*
+!.env.example
+
+# Plan / docs artifacts
+plan/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -20,5 +27,11 @@ dist-ssr
 *.suo
 *.ntvs*
 *.njsproj
-*.sln
+*.sln 
 *.sw?
+
+# OS files
+Thumbs.db
+
+# Coverage & test output
+coverage/

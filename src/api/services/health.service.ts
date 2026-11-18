@@ -1,14 +1,13 @@
-import { apiClient } from "../client";
-import { AppConfig } from "@config/constants";
+import { ApiClient } from "../client";
+import { Endpoints } from "@common/constants";
 
-export interface HealthResponse {
+export type HealthResponse = {
   status: string;
   timestamp?: string;
-}
-
-export const healthService = {
-  checkHealth: async (): Promise<HealthResponse> => {
-    return apiClient<HealthResponse>(AppConfig.api.endpoints.healthCheck);
-  },
 };
 
+export const HealthService = {
+  checkHealth: async (): Promise<HealthResponse> => {
+    return ApiClient<HealthResponse>(Endpoints.HEALTH_CHECK);
+  },
+};

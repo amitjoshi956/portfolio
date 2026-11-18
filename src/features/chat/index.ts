@@ -4,4 +4,6 @@ export { default as ChatInput } from "./ChatInput";
 export { default as MessageList } from "./MessageList";
 export { default as MessageBubble } from "./MessageBubble";
 export { default as SuggestionChips } from "./SuggestionChips";
+export { default as StreamRenderer } from "./StreamRenderer";
+export * from "./StreamRenderer";
 

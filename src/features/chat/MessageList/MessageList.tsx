@@ -6,12 +6,12 @@ import SuggestionChips from "../SuggestionChips";
 
 import "./MessageList.scss";
 
-export interface MessageListProps {
+export type MessageListProps = {
   messages: ChatMessage[];
   isStreaming?: boolean;
   onSelectSuggestion: (text: string) => void;
   followupSuggestions?: string[];
-}
+};
 
 const MessageList: FC<MessageListProps> = ({
   messages,

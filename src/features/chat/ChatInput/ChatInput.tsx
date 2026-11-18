@@ -13,14 +13,14 @@ import { classnames } from "@common/utils";
 
 import "./ChatInput.scss";
 
-export interface ChatInputProps {
+export type ChatInputProps = {
   onSend: (message: string) => void;
   onStop?: () => void;
   isStreaming?: boolean;
   disabled?: boolean;
   placeholder?: string;
   className?: string;
-}
+};
 
 const ChatInput: FC<ChatInputProps> = ({
   onSend,

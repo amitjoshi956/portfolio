@@ -5,12 +5,12 @@ import { DefaultSuggestionKeys } from "@common/constants";
 
 import "./SuggestionChips.scss";
 
-export interface SuggestionChipsProps {
+export type SuggestionChipsProps = {
   suggestions?: readonly string[] | string[];
   onSelect: (suggestion: string) => void;
   disabled?: boolean;
   className?: string;
-}
+};
 
 const SuggestionChips: FC<SuggestionChipsProps> = ({
   suggestions,
@@ -21,7 +21,8 @@ const SuggestionChips: FC<SuggestionChipsProps> = ({
   const { t } = useTranslation();
 
   const resolvedSuggestions =
-    suggestions ?? DefaultSuggestionKeys.map((key) => t(key));
+    suggestions ??
+    Object.values(DefaultSuggestionKeys).map((key) => t(key));
 
   // Enforce max 3 suggestions as per architecture guidelines
   const activeSuggestions = resolvedSuggestions.slice(0, 3);
