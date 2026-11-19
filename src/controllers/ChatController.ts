@@ -7,7 +7,7 @@ import {
   storageController,
   type StoredConversation,
 } from "./StorageController";
-import { parseStreamContent } from "@features/chat/StreamRenderer/streamParser";
+import { parseStreamContent } from "@components/StreamRenderer/streamParser";
 
 type ChatObserver = (messages: ChatMessage[], isStreaming: boolean) => void;
 

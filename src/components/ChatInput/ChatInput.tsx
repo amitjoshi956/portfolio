@@ -6,8 +6,8 @@ import {
   type KeyboardEvent,
 } from "react";
 import { useTranslation } from "react-i18next";
-import TextArea from "@components/TextArea";
-import Icon from "@components/Icon";
+import TextArea from "@components/base/TextArea";
+import Icon from "@components/base/Icon";
 import { IcSend, IcCancel } from "@assets/icons";
 import { classnames } from "@common/utils";
 

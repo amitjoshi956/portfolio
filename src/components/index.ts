@@ -1,25 +1,21 @@
-import AuroraBg from "./AuroraBg";
-import Button from "./Button";
-import Carousel, { type CarouselItem } from "./Carousel";
-import Chip from "./Chip";
-import Icon from "./Icon";
-import Input from "./Input";
-import Loader from "./Loader";
-import Modal from "./Modal";
-import TabView from "./TabView";
-import TextArea from "./TextArea";
+import AuroraBg from './AuroraBg';
+import Carousel, { type CarouselItem } from './Carousel';
+import ChatInput from './ChatInput';
+import MessageBubble from './MessageBubble';
+import Modal from './Modal';
+import StreamRenderer from './StreamRenderer';
+import SuggestionChips from './SuggestionChips';
+import TabView from './TabView';
 
 export {
   AuroraBg,
-  Button,
   Carousel,
-  Chip,
-  Icon,
-  Input,
-  Loader,
+  ChatInput,
+  MessageBubble,
   Modal,
+  StreamRenderer,
+  SuggestionChips,
   TabView,
-  TextArea,
 };
 
 export type { CarouselItem };

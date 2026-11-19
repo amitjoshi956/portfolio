@@ -2,7 +2,7 @@ import { useState, useEffect, type FC, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { themeController, type Theme } from "@controllers/ThemeController";
 import { audioController } from "@controllers/AudioController";
-import Icon from "@components/Icon";
+import Icon from "@components/base/Icon";
 import {
   IcSun,
   IcMoon,

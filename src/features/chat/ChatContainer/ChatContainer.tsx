@@ -1,7 +1,7 @@
 import { useCallback, type FC } from "react";
 import { useChat } from "@common/hooks";
 import MessageList from "../MessageList";
-import ChatInput from "../ChatInput";
+import ChatInput from "@components/ChatInput";
 
 import "./ChatContainer.scss";
 

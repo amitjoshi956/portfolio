@@ -1,7 +1,7 @@
 import type { FC, ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { IcCancel } from "@assets/icons";
-import Button from "@components/Button";
+import Button from "@components/base/Button";
 
 import "./Modal.scss";
 

@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import type { ChatMessage } from "@common/types";
 import { classnames } from "@common/utils";
-import StreamRenderer from "../StreamRenderer";
+import StreamRenderer from "@components/StreamRenderer";
 
 import "./MessageBubble.scss";
 

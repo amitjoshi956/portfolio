@@ -7,7 +7,7 @@ import {
 } from "react";
 import { classnames } from "@common/utils";
 import { IcAlert } from "@assets/icons";
-import Icon from "@components/Icon";
+import Icon from "@components/base/Icon";
 
 import "./TextArea.scss";
 

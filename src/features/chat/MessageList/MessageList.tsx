@@ -1,8 +1,8 @@
 import { useEffect, useRef, type FC } from "react";
 import { useTranslation } from "react-i18next";
 import type { ChatMessage } from "@common/types";
-import MessageBubble from "../MessageBubble";
-import SuggestionChips from "../SuggestionChips";
+import MessageBubble from "@components/MessageBubble";
+import SuggestionChips from "@components/SuggestionChips";
 
 import "./MessageList.scss";
 
